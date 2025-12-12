@@ -1,40 +1,46 @@
-from PIL import Image, ImageFilter
+"""Generate web-friendly profile image variants.
+
+This repository displays the profile picture as a 150x150 circle. To keep the *full* original
+image visible without cropping and still look sharp on high-DPI displays, we generate:
+
+* profile.jpg      (1x)
+* profile@2x.jpg   (2x)
+
+Input is taken from profile_full.jpg when present; otherwise profile.jpg is used.
+"""
+
+from PIL import Image
 import os
 
-def optimize_profile_picture():
-    input_path = 'profile.jpg'
-    output_path = 'profile_optimized.jpg'
-    
+
+def _resize_by_height(img: Image.Image, target_h: int) -> Image.Image:
+    w, h = img.size
+    if h <= target_h:
+        return img.copy()
+    target_w = round(w * (target_h / h))
+    return img.resize((target_w, target_h), Image.Resampling.LANCZOS)
+
+
+def generate_profile_variants():
+    input_path = "profile_full.jpg" if os.path.exists("profile_full.jpg") else "profile.jpg"
+
     try:
         with Image.open(input_path) as img:
-            # Convert to RGB if necessary
-            if img.mode in ('RGBA', 'P'):
-                img = img.convert('RGB')
-            
-            # Calculate target dimensions for a square crop
-            width, height = img.size
-            new_size = min(width, height)
-            
-            left = (width - new_size) / 2
-            top = (height - new_size) / 2
-            right = (width + new_size) / 2
-            bottom = (height + new_size) / 2
-            
-            # Crop to square
-            img = img.crop((left, top, right, bottom))
-            
-            # Resize to 400x400 (retina ready for 150px display)
-            img = img.resize((400, 400), Image.Resampling.LANCZOS)
-            
-            # Apply slight sharpening
-            img = img.filter(ImageFilter.SHARPEN)
-            
-            # Save
-            img.save(output_path, quality=95)
-            print(f"Successfully optimized image to {output_path}")
-            
+            if img.mode in ("RGBA", "P"):
+                img = img.convert("RGB")
+
+            # 1x / 2x variants for a 150px display size
+            img_1x = _resize_by_height(img, 600)
+            img_2x = _resize_by_height(img, 1200)
+
+            img_1x.save("profile.jpg", quality=92, optimize=True, progressive=True)
+            img_2x.save("profile@2x.jpg", quality=92, optimize=True, progressive=True)
+
+            print("Generated profile.jpg and profile@2x.jpg")
+
     except Exception as e:
-        print(f"Error optimizing image: {e}")
+        print(f"Error generating profile variants: {e}")
+
 
 if __name__ == "__main__":
-    optimize_profile_picture()
+    generate_profile_variants()

@@ -538,9 +538,11 @@ ul {
     margin: 0 auto 20px;
     display: block;
     /* Prevent aspect-ratio distortion for non-square images */
-    object-fit: cover;
+    /* Show the full original image without cropping */
+    object-fit: contain;
     object-position: center;
-    background: #cbd5e1;
+    /* Background is visible where the image doesn't fill the circle */
+    background: #ffffff;
 }
 
 .team-member h3 {
