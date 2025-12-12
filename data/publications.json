@@ -1,78 +1,313 @@
 {
-  "generated_from": "SBSlab-main/index.html",
-  "generated_at": "2025-12-12T03:59:39Z",
+  "generated_from": "publications_source.xlsx",
+  "generated_at": "2025-12-12T06:55:43Z",
+  "counts": {
+    "journal": 22,
+    "proceedings": 21
+  },
   "journal_papers": [
     {
       "year": 2026,
       "title": "Experimental performance evaluation of isothermal dehumidification and indirect evaporative cooling-assisted dedicated outdoor air system",
       "authors": "HJ Cho, SY Cheon, K Jang, B Kim, JW Jeong",
-      "venue": "Energy Conversion and Management 348, 120715",
+      "venue": "Energy Conversion and Management 348, 120715 (IF 10.9, Top 2.34%)",
       "within_year_order": 0
     },
     {
       "year": 2025,
       "title": "System design and performance assessment of hollow fiber membrane-based humidifier for HVAC applications",
       "authors": "HJ Cho, SY Cheon, SH Park, JW Jeong",
-      "venue": "Applied Thermal Engineering 265, 125603",
+      "venue": "Applied Thermal Engineering 265, 125603 (IF 6.9, Top 4.95%)",
       "within_year_order": 0
     },
     {
       "year": 2024,
-      "title": "Applicability of a dedicated outdoor air system assisted by isothermal dehumidification with membrane heat exchanger for residential buildings",
-      "authors": "HJ Cho, SY Cheon, JW Jeong",
-      "venue": "Energy and Buildings 324, 114842",
+      "title": "Energy saving of vacuum-based membrane dehumidification with indirect evaporative cooling in a low sensible-heat-ratio building",
+      "authors": "SH Park, SY Cheon, HJ Cho, JW Jeong",
+      "venue": "Journal of Building Engineering 96, 110490 (IF 7.4, Top 5.46%)",
       "within_year_order": 0
     },
     {
       "year": 2024,
-      "title": "Energy saving potential of liquid desiccant-assisted dedicated outdoor air system for greenhouse application",
+      "title": "Applicability of a dedicated outdoor air system assisted by isothermal dehumidification and evaporative cooling",
       "authors": "SY Cheon, HJ Cho, JW Jeong",
-      "venue": "Energy 309, 133069",
+      "venue": "Journal of Building Engineering 82, 108169 (IF 7.4, Top 5.46%)",
       "within_year_order": 1
     },
     {
       "year": 2024,
-      "title": "Performance improvement of thermoelectric generator-assisted dedicated outdoor air system using an evaporative cooler",
-      "authors": "DH Kim, SY Cheon, JW Jeong",
-      "venue": "Energy 307, 132646",
+      "title": "Experimental analysis of vacuum membrane dehumidifier: Hollow fiber module designs and dehumidification performance",
+      "authors": "HJ Cho, SY Cheon, JW Jeong, G Yoon",
+      "venue": "Applied Thermal Engineering 236, 121848 (IF 6.9, Top 4.95%)",
       "within_year_order": 2
+    },
+    {
+      "year": 2023,
+      "title": "Applicability of a liquid-desiccant air-conditioning system in energy-efficient buildings with high latent load",
+      "authors": "JH Lee, SY Cheon, SJ Lee, HJ Cho, JW Jeong",
+      "venue": "Journal of Building Engineering 78, 107608 (IF 7.4, Top 5.46%)",
+      "within_year_order": 0
+    },
+    {
+      "year": 2023,
+      "title": "Energy saving potential of latent heat exchanger-integrated dual core energy recovery ventilator",
+      "authors": "HJ Cho, SY Cheon, JW Jeong",
+      "venue": "Applied Thermal Engineering 231, 120989 (IF 6.9, Top 4.95%)",
+      "within_year_order": 1
+    },
+    {
+      "year": 2023,
+      "title": "Impact of external electric resistance on the power generation in the thermoelectric energy harvesting blocks",
+      "authors": "J Joung, SY Cheon, YK Kang, M Kim, J Park, JW Jeong",
+      "venue": "Renewable Energy 212, 779-791 (IF 9.1, Top 17.65%)",
+      "within_year_order": 2
+    },
+    {
+      "year": 2023,
+      "title": "Energy retrofit of public office building through liquid desiccant assisted dedicated outdoor air system with fuel cell in Korea",
+      "authors": "H Lim, SY Cheon, HJ Cho, JW Jeong, Y Su",
+      "venue": "Applied Thermal Engineering 230, 120870 (IF 6.9, Top 4.95%)",
+      "within_year_order": 3
+    },
+    {
+      "year": 2023,
+      "title": "Multi-objective optimization for capacity matching and energy performance of heat-pump-driven liquid-desiccant air-conditioning system",
+      "authors": "JH Lee, SY Cheon, JW Jeong",
+      "venue": "Applied Thermal Engineering 229, 120615 (IF 6.9, Top 4.95%)",
+      "within_year_order": 4
+    },
+    {
+      "year": 2023,
+      "title": "Experimental analysis on energy recovery ventilator with latent heat exchanger using hollow fiber membrane",
+      "authors": "HJ Cho, SY Cheon, JW Jeong",
+      "venue": "Energy Conversion and Management 278, 116706 (IF 10.9, Top 2.34%)",
+      "within_year_order": 5
+    },
+    {
+      "year": 2022,
+      "title": "Experimental study of vacuum-based membrane dehumidifier for HVAC system: Parametric analysis and dehumidification performance",
+      "authors": "SY Cheon, HJ Cho, JW Jeong",
+      "venue": "Energy Conversion and Management 270, 116252 (IF 10.9, Top 2.34%)",
+      "within_year_order": 0
+    },
+    {
+      "year": 2022,
+      "title": "Development of empirical models to predict latent heat exchange performance for hollow fiber membrane-based ventilation system",
+      "authors": "HJ Cho, SY Cheon, JW Jeong",
+      "venue": "Applied Thermal Engineering 213, 118686 (IF 6.9, Top 4.95%)",
+      "within_year_order": 1
+    },
+    {
+      "year": 2022,
+      "title": "Simplified effectiveness and number of transfer unit model for a vacuum membrane dehumidifier applied to air conditioning",
+      "authors": "SY Cheon, HJ Cho, JW Jeong",
+      "venue": "Applied Thermal Engineering 210, 118404 (IF 6.9, Top 4.95%)",
+      "within_year_order": 2
+    },
+    {
+      "year": 2022,
+      "title": "Design of a thermoelectric generator-assisted energy harvesting block considering melting temperature of phase change materials",
+      "authors": "J Ko, SY Cheon, YK Kang, JW Jeong",
+      "venue": "Renewable Energy 193, 89-112 (IF 9.1, Top 17.65%)",
+      "within_year_order": 3
+    },
+    {
+      "year": 2022,
+      "title": "Preliminary study on air-to-air latent heat exchanger fabricated using hollow fiber composite membrane for air-conditioning applications",
+      "authors": "HJ Cho, SY Cheon, JW Jeong",
+      "venue": "Energy conversion and management 251, 115000 (IF 10.9, Top 2.34%)",
+      "within_year_order": 4
+    },
+    {
+      "year": 2021,
+      "title": "Phase-change material-integrated thermoelectric radiant panel: Experimental performance analysis and system design",
+      "authors": "YK Kang, H Lim, SY Cheon, JW Jeong",
+      "venue": "Applied Thermal Engineering 194, 117082 (IF 6.9, Top 4.95%)",
+      "within_year_order": 0
+    },
+    {
+      "year": 2021,
+      "title": "Energy impact of vacuum-based membrane dehumidification in building air-conditioning applications",
+      "authors": "HJ Cho, SY Cheon, JW Jeong",
+      "venue": "Applied Thermal Engineering 182, 116094 (IF 6.9, Top 4.95%)",
+      "within_year_order": 1
+    },
+    {
+      "year": 2021,
+      "title": "Energy saving potential of a vacuum-based membrane dehumidifier in a dedicated outdoor air system",
+      "authors": "SY Cheon, HJ Cho, JW Jeong",
+      "venue": "Energy Conversion and Management 227, 113618 (IF 10.9, Top 2.34%)",
+      "within_year_order": 2
+    },
+    {
+      "year": 2019,
+      "title": "Applicability of thermoelectric heat pump in a dedicated outdoor air system",
+      "authors": "SY Cheon, H Lim, JW Jeong",
+      "venue": "Energy 173, 244-262 (IF 9.4, Top 3.80%)",
+      "within_year_order": 0
+    },
+    {
+      "year": 2019,
+      "title": "Experimental analysis of dehumidification performance of counter and cross-flow liquid desiccant dehumidifiers",
+      "authors": "HJ Cho, SY Cheon, JW Jeong",
+      "venue": "Applied Thermal Engineering 150, 210-223 (IF 6.9, Top 4.95%)",
+      "within_year_order": 1
+    },
+    {
+      "year": 2018,
+      "title": "Empirical analysis for the heat exchange effectiveness of a thermoelectric liquid cooling and heating unit",
+      "authors": "H Lim, SY Cheon, JW Jeong",
+      "venue": "Energies 11 (3), 580 (IF 3.2, Top 61.54%)",
+      "within_year_order": 0
     }
   ],
   "proceedings": [
     {
-      "year": 2024,
-      "title": "Experimental analysis of dehumidification performance of vacuum membrane dehumidifier for dedicated outdoor air system",
-      "authors": "SY Cheon, HJ Cho, JW Jeong",
-      "venue": "The 10th International Conference on Indoor Air Quality, Ventilation and Energy Conservation in Buildings (IAQVEC2024)",
+      "year": 2026,
+      "title": "The Feasibility Study on the Hollow Fiber Membrane Dehumidification System Coupling with Conventional Air Conditioning System",
+      "authors": "K Tsuji, G Yoon, HJ Cho, SY Cheon, JW Jeong",
+      "venue": "REHVA HVAC World Congress 792-800",
       "within_year_order": 0
     },
     {
       "year": 2024,
-      "title": "Operation energy simulation of liquid desiccant-assisted dedicated outdoor air system for greenhouse",
-      "authors": "SY Cheon, HJ Cho, JW Jeong",
-      "venue": "The 13th International Conference on Sustainable Energy & Environmental Protection (SEEP2024)",
+      "title": "Preliminary Test on Moisture Transfer of Flat Sheet Membrane-based Dehumidification System",
+      "authors": "HJ Cho, SY Cheon, SJ Lee, JW Jeong",
+      "venue": "Purdue conference",
+      "within_year_order": 0
+    },
+    {
+      "year": 2024,
+      "title": "Thermodynamic Analysis of Cascade Vacuum Pump Based Membrane Dehumidifier in Air Conditioning System",
+      "authors": "SY Cheon, HJ Cho, JH Lee, SH Park, JW Jeong",
+      "venue": "Purdue conference",
       "within_year_order": 1
     },
     {
       "year": 2024,
-      "title": "Performance evaluation of thermoelectric generator-assisted dedicated outdoor air system with evaporative cooler",
-      "authors": "DH Kim, SY Cheon, JW Jeong",
-      "venue": "The 13th International Conference on Sustainable Energy & Environmental Protection (SEEP2024)",
+      "title": "Exergy analysis on the low flow rate of solution in the atomization-based liquid desiccant system",
+      "authors": "SJ Lee, SY Cheon, S Kim, TD Kwon, JW Jeong",
+      "venue": "Journal of Physics: Conference 2600 (6), 062007",
       "within_year_order": 2
     },
     {
-      "year": 2024,
-      "title": "Performance evaluation of liquid desiccant-assisted dedicated outdoor air system for greenhouse",
-      "authors": "SY Cheon, HJ Cho, JW Jeong",
-      "venue": "SAREK Summer Annual Conference",
+      "year": 2023,
+      "title": "Design and energy performance of the heat pump-driven liquid desiccant system with an ultrasonic atomization",
+      "authors": "SJ Lee, SY Cheon, SY Jo, JW Joung, JW Jeong",
+      "venue": "IEA",
+      "within_year_order": 0
+    },
+    {
+      "year": 2023,
+      "title": "Theoretical analysis of membrane based liquid desiccant air conditioning system",
+      "authors": "SY Cheon, BJ Kim, JH Lee, M Kim, HL Park, JW Jeong",
+      "venue": "IEA",
+      "within_year_order": 1
+    },
+    {
+      "year": 2023,
+      "title": "Humidification Performance Evaluation of hollow-fiber membrane-based humidifier for air-conditioning",
+      "authors": "SY Jo, SY Cheon, BJ Kim, TD Kwon, JW Jeong",
+      "venue": "E3S Web of Conferences 396, 01099",
+      "within_year_order": 2
+    },
+    {
+      "year": 2022,
+      "title": "Experimental investigation on a packaged unit of membrane dehumidification-based ventilation system",
+      "authors": "HY Cho, SY Cheon, SY Jo, SJ Lee, GB Lee , JW Jeong",
+      "venue": "CLIMA",
+      "within_year_order": 0
+    },
+    {
+      "year": 2022,
+      "title": "Performance Analysis of a Passive Mixing Strategy assisted Heat-Pump-driven Liquid-Desiccant Air-Conditioning System",
+      "authors": "JH Lee, SY Cheon, M Kim, HL Park, JW Jeong",
+      "venue": "E3S Web of Conferences 356, 1-4",
+      "within_year_order": 1
+    },
+    {
+      "year": 2021,
+      "title": "Phase-Change Material Design for Thermoelectric Generator-Assisted Building Integrated Photovoltaic",
+      "authors": "J Ko, SY Cheon",
+      "venue": "ASHRAE 127, 100-107",
+      "within_year_order": 0
+    },
+    {
+      "year": 2021,
+      "title": "Experimental Study on Dehumidification Performance of a Vacuum-Based Membrane Dehumidifier",
+      "authors": "SY Cheon, SJ Lee, LH Lin",
+      "venue": "ASHRAE 127, 457-465",
+      "within_year_order": 1
+    },
+    {
+      "year": 2021,
+      "title": "Energy Performance of Desiccant and Evaporative Cooling-assisted 100% Outdoor Air System Combined with a Thermoelectric Module and Organic Rankine Cycle",
+      "authors": "SY Yoon, JY Park, SY Cheon, S Liu, JW Jeong",
+      "venue": "Building Simulation 16, 3963-3967",
+      "within_year_order": 2
+    },
+    {
+      "year": 2019,
+      "title": "Numerical Study of Heat Transfer in an Air-to-Air Heat Exchanger Integrated with a Thermoelectric Heat Pump",
+      "authors": "SY Cheon, HW Dong, YK Kang, SJ Lee, JW Jeong",
+      "venue": "IBPSA",
+      "within_year_order": 0
+    },
+    {
+      "year": 2019,
+      "title": "Energy-saving potential of dedicated outdoor-air system assisted by vacuum-based membrane dehumidifier",
+      "authors": "SY Cheon, SY Yoon, S Liu, JW Jeong",
+      "venue": "E3S Web of Conferences 111, 01087",
+      "within_year_order": 1
+    },
+    {
+      "year": 2019,
+      "title": "A numerical model and validation of phase change material integrated thermoelectric radiant cooling panel",
+      "authors": "H Lim, HJ Cho, SY Cheon, SJ Lee, JW Jeong",
+      "venue": "EDP Sciences",
+      "within_year_order": 2
+    },
+    {
+      "year": 2019,
+      "title": "Energy-Harvesting Benefit of a Thermoelectric Generator for a Liquid Desiccant System in an Organic Rankine Cycle",
+      "authors": "SY Yoon, JY Park, SY Cheon, S Liu, JW Jeong",
+      "venue": "Building Simulation",
       "within_year_order": 3
     },
     {
-      "year": 2024,
-      "title": "Performance evaluation of thermoelectric generator-assisted dedicated outdoor air system with evaporative cooler",
-      "authors": "DH Kim, SY Cheon, JW Jeong",
-      "venue": "SAREK Summer Annual Conference",
-      "within_year_order": 4
+      "year": 2018,
+      "title": "Empirical Study on The Heat Exchange Effectiveness of A Cross-flow Thermoelectric Air To Air Heat Pump Unit",
+      "authors": "SY Cheon, JW Jeong",
+      "venue": "Purdue",
+      "within_year_order": 0
+    },
+    {
+      "year": 2018,
+      "title": "Energy Saving Potential of a Dedicated Outdoor Air System with Desiccant Wheel Assisted by Thermoelectric Modules",
+      "authors": "SY Cheon, JW Jeong",
+      "venue": "Roomvent and Ventilation Track 6, 959-964",
+      "within_year_order": 1
+    },
+    {
+      "year": 2018,
+      "title": "Energy Performance Of Thermoelectric Ceiling Radiant Panels With A Dedicated Outdoor Air System In High-Speed Train Cabins",
+      "authors": "H Lim, HJ Cho, SY Cheon, SJ Lee, JW Jeong",
+      "venue": "ASIM",
+      "within_year_order": 2
+    },
+    {
+      "year": 2018,
+      "title": "Energy Benefit Of Thermoelectric Module In A Dedicated Outdoor Air System With Desiccant Wheel",
+      "authors": "SY Cheon, HW Dong, YK Kang, BJ Kim, JW Jeong",
+      "venue": "ASIM",
+      "within_year_order": 3
+    },
+    {
+      "year": 2017,
+      "title": "Microorganism contaminants removal in a liquid desiccant dehumidification system",
+      "authors": "JY Park, EJ Choi, SY Cheon, HW Dong, JW Jeong",
+      "venue": "Proceedings of 2017 AIVC 622-629",
+      "within_year_order": 0
     }
   ]
 }
