@@ -1,0 +1,78 @@
+{
+  "generated_from": "SBSlab-main/index.html",
+  "generated_at": "2025-12-12T03:59:39Z",
+  "journal_papers": [
+    {
+      "year": 2026,
+      "title": "Experimental performance evaluation of isothermal dehumidification and indirect evaporative cooling-assisted dedicated outdoor air system",
+      "authors": "HJ Cho, SY Cheon, K Jang, B Kim, JW Jeong",
+      "venue": "Energy Conversion and Management 348, 120715",
+      "within_year_order": 0
+    },
+    {
+      "year": 2025,
+      "title": "System design and performance assessment of hollow fiber membrane-based humidifier for HVAC applications",
+      "authors": "HJ Cho, SY Cheon, SH Park, JW Jeong",
+      "venue": "Applied Thermal Engineering 265, 125603",
+      "within_year_order": 0
+    },
+    {
+      "year": 2024,
+      "title": "Applicability of a dedicated outdoor air system assisted by isothermal dehumidification with membrane heat exchanger for residential buildings",
+      "authors": "HJ Cho, SY Cheon, JW Jeong",
+      "venue": "Energy and Buildings 324, 114842",
+      "within_year_order": 0
+    },
+    {
+      "year": 2024,
+      "title": "Energy saving potential of liquid desiccant-assisted dedicated outdoor air system for greenhouse application",
+      "authors": "SY Cheon, HJ Cho, JW Jeong",
+      "venue": "Energy 309, 133069",
+      "within_year_order": 1
+    },
+    {
+      "year": 2024,
+      "title": "Performance improvement of thermoelectric generator-assisted dedicated outdoor air system using an evaporative cooler",
+      "authors": "DH Kim, SY Cheon, JW Jeong",
+      "venue": "Energy 307, 132646",
+      "within_year_order": 2
+    }
+  ],
+  "proceedings": [
+    {
+      "year": 2024,
+      "title": "Experimental analysis of dehumidification performance of vacuum membrane dehumidifier for dedicated outdoor air system",
+      "authors": "SY Cheon, HJ Cho, JW Jeong",
+      "venue": "The 10th International Conference on Indoor Air Quality, Ventilation and Energy Conservation in Buildings (IAQVEC2024)",
+      "within_year_order": 0
+    },
+    {
+      "year": 2024,
+      "title": "Operation energy simulation of liquid desiccant-assisted dedicated outdoor air system for greenhouse",
+      "authors": "SY Cheon, HJ Cho, JW Jeong",
+      "venue": "The 13th International Conference on Sustainable Energy & Environmental Protection (SEEP2024)",
+      "within_year_order": 1
+    },
+    {
+      "year": 2024,
+      "title": "Performance evaluation of thermoelectric generator-assisted dedicated outdoor air system with evaporative cooler",
+      "authors": "DH Kim, SY Cheon, JW Jeong",
+      "venue": "The 13th International Conference on Sustainable Energy & Environmental Protection (SEEP2024)",
+      "within_year_order": 2
+    },
+    {
+      "year": 2024,
+      "title": "Performance evaluation of liquid desiccant-assisted dedicated outdoor air system for greenhouse",
+      "authors": "SY Cheon, HJ Cho, JW Jeong",
+      "venue": "SAREK Summer Annual Conference",
+      "within_year_order": 3
+    },
+    {
+      "year": 2024,
+      "title": "Performance evaluation of thermoelectric generator-assisted dedicated outdoor air system with evaporative cooler",
+      "authors": "DH Kim, SY Cheon, JW Jeong",
+      "venue": "SAREK Summer Annual Conference",
+      "within_year_order": 4
+    }
+  ]
+}
