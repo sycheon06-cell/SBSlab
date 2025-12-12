@@ -653,6 +653,12 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .contact-map,
+    .contact-map iframe {
+        min-height: 480px;
+    }
+
+
     .nav-links {
         position: absolute;
         right: 0px;
