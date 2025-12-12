@@ -534,15 +534,13 @@ ul {
 .member-img {
     width: 150px;
     height: 150px;
-    background: #cbd5e1;
     border-radius: 50%;
     margin: 0 auto 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    color: #fff;
-    font-weight: 700;
+    display: block;
+    /* Prevent aspect-ratio distortion for non-square images */
+    object-fit: cover;
+    object-position: center;
+    background: #cbd5e1;
 }
 
 .team-member h3 {
