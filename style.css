@@ -121,6 +121,9 @@ ul {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    line-height: 0;
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color);
@@ -128,6 +131,14 @@ ul {
 
 .logo span {
     color: var(--secondary-color);
+}
+
+/* Navbar logo image (keeps original aspect ratio) */
+.logo-img {
+    height: 40px;
+    width: auto;
+    display: block;
+    object-fit: contain;
 }
 
 .nav-links {
@@ -311,6 +322,9 @@ ul {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    line-height: 0;
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color);
@@ -628,6 +642,10 @@ footer {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .logo-img {
+        height: 34px;
+    }
+
     .hero .container {
         grid-template-columns: 1fr;
         text-align: center;
