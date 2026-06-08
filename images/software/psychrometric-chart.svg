@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 405" role="img" aria-label="Psychrometric chart thumbnail">
+  <defs>
+    <linearGradient id="chartBg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#e0f2fe"/>
+    </linearGradient>
+    <filter id="chartShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity=".13"/>
+    </filter>
+  </defs>
+  <rect width="720" height="405" fill="url(#chartBg)"/>
+  <g filter="url(#chartShadow)">
+    <rect x="48" y="48" width="624" height="308" rx="16" fill="#ffffff"/>
+    <g stroke="#e2e8f0" stroke-width="1">
+      <path d="M92 308h524M92 268h524M92 228h524M92 188h524M92 148h524M92 108h524"/>
+      <path d="M132 84v224M184 84v224M236 84v224M288 84v224M340 84v224M392 84v224M444 84v224M496 84v224M548 84v224M600 84v224"/>
+    </g>
+    <g fill="none" stroke-width="3" opacity=".78">
+      <path d="M105 306C150 230 216 174 282 140c80-42 164-36 242 10 40 24 72 56 92 96" stroke="#2563eb"/>
+      <path d="M145 306C190 244 250 203 326 179c78-25 157-9 229 46" stroke="#06b6d4"/>
+      <path d="M194 306C242 254 304 223 371 218c70-5 126 15 178 60" stroke="#22c55e"/>
+      <path d="M93 265C190 284 279 274 360 239c64-28 110-70 148-122" stroke="#f97316" opacity=".65"/>
+      <path d="M93 228C196 243 286 232 363 199c66-28 113-66 148-109" stroke="#ef4444" opacity=".56"/>
+    </g>
+    <circle cx="324" cy="207" r="9" fill="#2563eb"/>
+    <circle cx="460" cy="176" r="9" fill="#ef4444"/>
+    <path d="M324 207C370 184 410 174 460 176" fill="none" stroke="#0f172a" stroke-width="3" stroke-dasharray="8 8"/>
+    <rect x="94" y="328" width="150" height="10" rx="5" fill="#bfdbfe"/>
+    <rect x="268" y="328" width="120" height="10" rx="5" fill="#bbf7d0"/>
+    <rect x="412" y="328" width="116" height="10" rx="5" fill="#fed7aa"/>
+  </g>
+</svg>
