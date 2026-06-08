@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 405" role="img" aria-label="Optimization studio thumbnail">
+  <defs>
+    <radialGradient id="darkGlow" cx=".58" cy=".36" r=".74">
+      <stop offset="0" stop-color="#164e63"/>
+      <stop offset=".52" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#020617"/>
+    </radialGradient>
+    <linearGradient id="ridge" x1="0" x2="1">
+      <stop offset="0" stop-color="#06b6d4"/>
+      <stop offset=".55" stop-color="#22c55e"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+    <filter id="optGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="720" height="405" fill="url(#darkGlow)"/>
+  <g stroke="#134e4a" stroke-width="1" opacity=".45">
+    <path d="M0 310h720M0 270h720M0 230h720M0 190h720M0 150h720M0 110h720"/>
+    <path d="M80 0v405M160 0v405M240 0v405M320 0v405M400 0v405M480 0v405M560 0v405M640 0v405"/>
+  </g>
+  <g filter="url(#optGlow)">
+    <path d="M116 301c66-84 129-111 190-80 64 32 87 6 132-74 34-61 88-55 120 6 29 56 52 87 102 70v82H116z" fill="url(#ridge)" opacity=".78"/>
+    <path d="M116 301c66-84 129-111 190-80 64 32 87 6 132-74 34-61 88-55 120 6 29 56 52 87 102 70" fill="none" stroke="#fbbf24" stroke-width="4"/>
+    <path d="M130 316c74-57 134-73 185-48 58 28 103 15 147-49 44-64 84-69 119-12 28 45 54 60 104 38" fill="none" stroke="#38bdf8" stroke-width="3" opacity=".85"/>
+    <path d="M150 252c54-45 103-54 147-29 50 29 100 5 144-54 39-52 73-50 104 2" fill="none" stroke="#67e8f9" stroke-width="2" opacity=".72"/>
+    <g fill="#ecfeff">
+      <circle cx="177" cy="263" r="6"/><circle cx="229" cy="229" r="6"/><circle cx="311" cy="226" r="6"/>
+      <circle cx="405" cy="184" r="6"/><circle cx="475" cy="119" r="8"/><circle cx="564" cy="184" r="6"/>
+    </g>
+  </g>
+  <g fill="none" stroke-width="2" opacity=".78">
+    <rect x="34" y="58" width="150" height="88" rx="10" stroke="#0891b2"/>
+    <path d="M56 124c22-32 42-11 62-44 18 36 35 18 54 44" stroke="#06b6d4"/>
+    <rect x="546" y="58" width="138" height="88" rx="10" stroke="#f59e0b"/>
+    <path d="M566 84c25 33 44 45 74 36" stroke="#fbbf24"/>
+    <rect x="548" y="252" width="138" height="86" rx="10" stroke="#0891b2"/>
+    <path d="M568 314c16-45 31 10 48-30 18 42 35-13 54 18" stroke="#38bdf8"/>
+  </g>
+  <path d="M476 118l18-18M476 118l-22 6" stroke="#fff7ed" stroke-width="3" stroke-linecap="round"/>
+</svg>
