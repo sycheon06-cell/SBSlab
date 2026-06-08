@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 405" role="img" aria-label="Membrane humidifier configurator thumbnail">
+  <defs>
+    <linearGradient id="room" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fbf7ee"/>
+      <stop offset=".58" stop-color="#f5efe4"/>
+      <stop offset="1" stop-color="#d9f2df"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" x2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f8fafc"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="9" stdDeviation="14" flood-color="#0f172a" flood-opacity=".18"/>
+    </filter>
+  </defs>
+  <rect width="720" height="405" fill="url(#room)"/>
+  <circle cx="564" cy="90" r="58" fill="#ffffff" opacity=".38"/>
+  <circle cx="620" cy="130" r="88" fill="#ffffff" opacity=".28"/>
+  <g filter="url(#shadow)">
+    <rect x="393" y="136" width="232" height="156" rx="14" fill="#f8fafc" stroke="#d1d5db" stroke-width="2"/>
+    <rect x="423" y="163" width="142" height="86" rx="7" fill="#e2e8f0" stroke="#94a3b8"/>
+    <rect x="438" y="174" width="112" height="58" rx="4" fill="#f8fafc"/>
+    <g stroke="#94a3b8" stroke-width="4">
+      <path d="M448 176v56M463 176v56M478 176v56M493 176v56M508 176v56M523 176v56M538 176v56"/>
+    </g>
+    <rect x="580" y="165" width="4" height="4" rx="2" fill="#22c55e"/>
+    <rect x="580" y="189" width="4" height="4" rx="2" fill="#22c55e"/>
+    <rect x="580" y="213" width="4" height="4" rx="2" fill="#22c55e"/>
+    <rect x="420" y="261" width="52" height="8" rx="4" fill="#bae6fd"/>
+    <rect x="485" y="261" width="52" height="8" rx="4" fill="#bbf7d0"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="54" y="70" width="284" height="238" rx="16" fill="url(#panel)" stroke="#d7dee8"/>
+    <circle cx="96" cy="110" r="22" fill="#dcfce7"/>
+    <path d="M86 110c18-28 34-21 42-37" fill="none" stroke="#059669" stroke-width="5" stroke-linecap="round"/>
+    <path d="M92 113l10 10 24-32" fill="none" stroke="#0f766e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="82" y="164" width="194" height="14" rx="7" fill="#0f172a"/>
+    <rect x="82" y="191" width="150" height="12" rx="6" fill="#059669"/>
+    <rect x="82" y="223" width="88" height="30" rx="15" fill="#ecfdf5" stroke="#99f6e4"/>
+    <rect x="184" y="223" width="74" height="30" rx="15" fill="#ecfdf5" stroke="#99f6e4"/>
+  </g>
+  <g fill="#ffffff" opacity=".72">
+    <path d="M482 119c-12-38 14-60 18-90 16 37-5 54 9 90z"/>
+    <path d="M558 123c-14-42 16-62 19-92 17 39-5 56 10 92z"/>
+  </g>
+</svg>
