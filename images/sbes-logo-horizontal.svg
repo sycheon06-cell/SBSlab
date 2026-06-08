@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1038" height="291" viewBox="0 0 1038 291" role="img" aria-labelledby="title desc">
+  <title id="title">SBES Lab</title>
+  <desc id="desc">Sustainable Building Energy System Lab logo</desc>
+  <rect width="1038" height="291" fill="#fff"/>
+  <g transform="translate(38 28)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M28 139V61l57-31v188L28 139Z" stroke="#1177a1" stroke-width="8"/>
+    <path d="M83 96V51l45 24v143" stroke="#2fb78d" stroke-width="8"/>
+    <path d="M128 83h22l13 25 29 2 10 33-22 21 6 31-31 18-26-17-26 17" stroke="#39be8b" stroke-width="8"/>
+    <circle cx="151" cy="132" r="17" stroke="#39be8b" stroke-width="8"/>
+    <path d="M132 132h-23m42-17V93m16 49 22 12m-38 5v24" stroke="#39be8b" stroke-width="7"/>
+    <circle cx="109" cy="132" r="6" fill="#39be8b" stroke="none"/>
+    <circle cx="151" cy="93" r="6" fill="#39be8b" stroke="none"/>
+    <circle cx="189" cy="154" r="6" fill="#39be8b" stroke="none"/>
+    <path d="M20 142c57-10 110 18 132 76-63 5-113-16-132-76Z" stroke="#1177a1" stroke-width="8"/>
+    <path d="M42 158c31 26 58 44 98 58M83 165v35M60 187h42" stroke="#1177a1" stroke-width="8"/>
+  </g>
+  <text x="295" y="158" font-family="Arial, Helvetica, sans-serif" font-size="110" font-weight="700" fill="#1163a6">SBES Lab</text>
+  <text x="298" y="262" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" fill="#26b1a9">Sustainable Building Energy System Lab</text>
+</svg>
