@@ -1,32 +1,89 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 405" role="img" aria-label="Psychrometric chart thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Interactive psychrometric chart web app screenshot style thumbnail">
   <defs>
-    <linearGradient id="chartBg" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0" stop-color="#f8fafc"/>
-      <stop offset="1" stop-color="#e0f2fe"/>
-    </linearGradient>
-    <filter id="chartShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity=".13"/>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#0f172a" flood-opacity=".12"/>
     </filter>
+    <linearGradient id="panel" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f7fbfa"/>
+    </linearGradient>
   </defs>
-  <rect width="720" height="405" fill="url(#chartBg)"/>
-  <g filter="url(#chartShadow)">
-    <rect x="48" y="48" width="624" height="308" rx="16" fill="#ffffff"/>
-    <g stroke="#e2e8f0" stroke-width="1">
-      <path d="M92 308h524M92 268h524M92 228h524M92 188h524M92 148h524M92 108h524"/>
-      <path d="M132 84v224M184 84v224M236 84v224M288 84v224M340 84v224M392 84v224M444 84v224M496 84v224M548 84v224M600 84v224"/>
+  <rect width="960" height="540" fill="#f8faf9"/>
+  <text x="72" y="52" fill="#0f766e" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800">INTERACTIVE PSYCHROMETRIC CHART</text>
+  <text x="72" y="94" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="800">습공기 선도</text>
+  <text x="74" y="124" fill="#334155" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700">by Ivysaur.lab</text>
+  <g transform="translate(548 52)">
+    <rect x="0" y="0" width="48" height="28" rx="8" fill="#ecfdf5" stroke="#cbd5e1"/>
+    <text x="14" y="19" fill="#075985" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800">Auto</text>
+    <text x="68" y="19" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700">한국어</text>
+    <text x="122" y="19" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700">EN</text>
+    <rect x="174" y="0" width="70" height="28" rx="7" fill="#fff" stroke="#cbd5e1"/>
+    <text x="192" y="19" fill="#0f172a" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800">내보내기</text>
+    <rect x="254" y="0" width="70" height="28" rx="7" fill="#fff" stroke="#cbd5e1"/>
+    <text x="272" y="19" fill="#0f172a" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800">불러오기</text>
+  </g>
+  <g transform="translate(72 144)" filter="url(#shadow)">
+    <rect width="256" height="322" rx="8" fill="url(#panel)" stroke="#d7e2df"/>
+    <text x="18" y="32" fill="#0f172a" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800">현재 계산</text>
+    <text x="18" y="68" fill="#64748b" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700">점 없음</text>
+    <text x="18" y="108" fill="#334155" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800">물성 1</text>
+    <rect x="78" y="88" width="104" height="30" rx="7" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="94" y="108" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800">건구온도 DB</text>
+    <rect x="188" y="88" width="50" height="30" rx="7" fill="#fff" stroke="#d8dee6"/>
+    <text x="204" y="108" fill="#64748b" font-family="Inter, Arial, sans-serif" font-size="13">입력</text>
+    <text x="18" y="148" fill="#334155" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800">물성 2</text>
+    <rect x="78" y="128" width="104" height="30" rx="7" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="95" y="148" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800">상대습도 RH</text>
+    <rect x="188" y="128" width="50" height="30" rx="7" fill="#fff" stroke="#d8dee6"/>
+    <text x="204" y="148" fill="#64748b" font-family="Inter, Arial, sans-serif" font-size="13">입력</text>
+    <line x1="0" y1="188" x2="256" y2="188" stroke="#dbe4e2"/>
+    <text x="18" y="218" fill="#0f172a" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="800">계산 결과</text>
+    <g fill="#fff" stroke="#d7e2df">
+      <rect x="18" y="236" width="68" height="50" rx="7"/>
+      <rect x="96" y="236" width="68" height="50" rx="7"/>
+      <rect x="174" y="236" width="64" height="50" rx="7"/>
+      <rect x="18" y="294" width="68" height="50" rx="7"/>
+      <rect x="96" y="294" width="68" height="50" rx="7"/>
+      <rect x="174" y="294" width="64" height="50" rx="7"/>
     </g>
-    <g fill="none" stroke-width="3" opacity=".78">
-      <path d="M105 306C150 230 216 174 282 140c80-42 164-36 242 10 40 24 72 56 92 96" stroke="#2563eb"/>
-      <path d="M145 306C190 244 250 203 326 179c78-25 157-9 229 46" stroke="#06b6d4"/>
-      <path d="M194 306C242 254 304 223 371 218c70-5 126 15 178 60" stroke="#22c55e"/>
-      <path d="M93 265C190 284 279 274 360 239c64-28 110-70 148-122" stroke="#f97316" opacity=".65"/>
-      <path d="M93 228C196 243 286 232 363 199c66-28 113-66 148-109" stroke="#ef4444" opacity=".56"/>
+    <g fill="#475569" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="800">
+      <text x="28" y="256">절대습도</text><text x="106" y="256">습구온도</text><text x="184" y="256">노점온도</text>
+      <text x="28" y="314">엔탈피</text><text x="106" y="314">수증기</text><text x="184" y="314">포화압</text>
     </g>
-    <circle cx="324" cy="207" r="9" fill="#2563eb"/>
-    <circle cx="460" cy="176" r="9" fill="#ef4444"/>
-    <path d="M324 207C370 184 410 174 460 176" fill="none" stroke="#0f172a" stroke-width="3" stroke-dasharray="8 8"/>
-    <rect x="94" y="328" width="150" height="10" rx="5" fill="#bfdbfe"/>
-    <rect x="268" y="328" width="120" height="10" rx="5" fill="#bbf7d0"/>
-    <rect x="412" y="328" width="116" height="10" rx="5" fill="#fed7aa"/>
+  </g>
+  <g transform="translate(348 144)" filter="url(#shadow)">
+    <rect width="540" height="322" rx="8" fill="#fff" stroke="#d7e2df"/>
+    <rect width="540" height="44" rx="8" fill="#fbfdfd"/>
+    <line x1="0" y1="44" x2="540" y2="44" stroke="#dbe4e2"/>
+    <text x="18" y="28" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700">차트 위를 움직이면 좌표를 읽습니다.</text>
+    <rect x="410" y="10" width="56" height="24" rx="12" fill="#ecfeff" stroke="#99f6e4"/>
+    <text x="422" y="27" fill="#0f766e" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="800">축 고정</text>
+    <g transform="translate(486 10)" fill="#fff" stroke="#d7e2df">
+      <rect x="0" y="0" width="24" height="24" rx="5"/>
+      <rect x="30" y="0" width="24" height="24" rx="5"/>
+    </g>
+    <g transform="translate(58 88)">
+      <rect width="430" height="180" fill="#fbfbf8" stroke="#94a3a3" stroke-width="2"/>
+      <g stroke="#cbd5d1" stroke-width="1">
+        <path d="M0 160H430M0 130H430M0 100H430M0 70H430M0 40H430"/>
+        <path d="M60 0V180M120 0V180M180 0V180M240 0V180M300 0V180M360 0V180"/>
+      </g>
+      <g fill="none" stroke="#16827f" stroke-width="2">
+        <path d="M0 170 C88 160 152 130 203 76 C230 48 250 22 266 0"/>
+        <path d="M0 170 C98 158 186 138 273 94 C322 70 370 42 430 6"/>
+        <path d="M0 170 C118 163 215 149 320 112 C368 94 400 78 430 62"/>
+        <path d="M0 170 C128 166 250 158 350 134 C382 126 410 118 430 110"/>
+      </g>
+      <g stroke="#94d3c1" stroke-width="1" opacity=".9">
+        <path d="M20 180L292 0M58 180L326 0M96 180L360 0M134 180L394 0M172 180L428 0"/>
+      </g>
+      <g stroke="#9cc8d2" stroke-dasharray="4 6" fill="none">
+        <path d="M62 158 C165 120 282 96 430 84"/>
+        <path d="M132 130 C232 105 312 82 430 58"/>
+      </g>
+      <text x="177" y="154" fill="#0f766e" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="800" transform="rotate(-22 177 154)">10°C WB</text>
+      <text x="272" y="112" fill="#0f766e" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="800">40%</text>
+      <text x="395" y="190" fill="#0f172a" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="800">건구온도 DBT (°C)</text>
+    </g>
   </g>
 </svg>
