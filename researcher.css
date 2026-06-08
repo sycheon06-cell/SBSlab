@@ -1,0 +1,42 @@
+.researcher-cards {
+    margin-top: 40px;
+    text-align: left;
+}
+
+.researcher-card {
+    padding: 35px;
+}
+
+.researcher-card .card-icon {
+    margin-bottom: 18px;
+}
+
+.researcher-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 18px;
+}
+
+.researcher-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.researcher-list li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 12px;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+.researcher-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--secondary-color);
+}
