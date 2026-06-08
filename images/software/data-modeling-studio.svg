@@ -1,47 +1,80 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 405" role="img" aria-label="Data modeling studio thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Data Modeling Studio web app screenshot style thumbnail">
   <defs>
-    <linearGradient id="dataBg" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0" stop-color="#f0fdf4"/>
-      <stop offset=".55" stop-color="#ecfdf5"/>
-      <stop offset="1" stop-color="#d1fae5"/>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f6f3e8"/>
+      <stop offset=".45" stop-color="#dfe8df"/>
+      <stop offset="1" stop-color="#8da49b"/>
     </linearGradient>
-    <linearGradient id="surface" x1="0" x2="1">
-      <stop offset="0" stop-color="#14b8a6"/>
-      <stop offset=".55" stop-color="#22c55e"/>
-      <stop offset="1" stop-color="#84cc16"/>
+    <linearGradient id="mist" x1="0" x2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".86"/>
+      <stop offset=".42" stop-color="#fff" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#fff" stop-opacity=".06"/>
     </linearGradient>
-    <filter id="dataShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="9" stdDeviation="14" flood-color="#064e3b" flood-opacity=".16"/>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#0f172a" flood-opacity=".12"/>
     </filter>
   </defs>
-  <rect width="720" height="405" fill="url(#dataBg)"/>
-  <g filter="url(#dataShadow)">
-    <rect x="44" y="56" width="184" height="292" rx="16" fill="#ffffff" opacity=".9"/>
-    <path d="M74 276c28-50 52-50 72-76 30-40 39-62 75-86" fill="none" stroke="#10b981" stroke-width="5"/>
-    <g fill="#14b8a6" opacity=".86">
-      <circle cx="74" cy="276" r="6"/><circle cx="99" cy="246" r="5"/><circle cx="126" cy="226" r="5"/>
-      <circle cx="149" cy="198" r="6"/><circle cx="172" cy="160" r="5"/><circle cx="205" cy="119" r="6"/>
-    </g>
-    <path d="M70 124h118M70 146h94M70 320h140" stroke="#d1fae5" stroke-width="10" stroke-linecap="round"/>
+  <rect width="960" height="540" fill="url(#bg)"/>
+  <g opacity=".27" stroke="#effaf5" stroke-width="3">
+    <path d="M120 520 C260 430 310 330 510 310 C705 290 780 185 920 112" fill="none"/>
+    <path d="M28 525 L930 525M80 482 L940 480M110 438 L920 438"/>
+    <path d="M270 10 H900M460 38 H910" stroke-linecap="round"/>
   </g>
-  <g filter="url(#dataShadow)">
-    <path d="M286 269c40-80 68-116 116-126 56-12 98 17 143 72 28 34 57 47 95 36v68H286z" fill="url(#surface)" opacity=".88"/>
-    <path d="M286 269c40-80 68-116 116-126 56-12 98 17 143 72 28 34 57 47 95 36" fill="none" stroke="#064e3b" stroke-width="3" opacity=".38"/>
-    <g stroke="#a7f3d0" stroke-width="1.5" opacity=".72">
-      <path d="M307 285c48-33 99-52 151-56 52-5 104 5 158 30"/>
-      <path d="M326 254c46-31 93-46 141-45 48 1 95 15 143 42"/>
-      <path d="M349 222c44-24 84-33 122-28 44 6 81 24 119 52"/>
-      <path d="M381 185c36-10 68-9 98 7 32 16 61 39 89 67"/>
-      <path d="M319 304l72-136M386 318l64-154M456 318l35-149M528 318l-3-135M604 318l-61-109"/>
+  <rect width="960" height="540" fill="url(#mist)"/>
+  <g transform="translate(230 110)" opacity=".55" filter="url(#shadow)">
+    <rect width="520" height="330" rx="8" fill="rgba(255,255,255,.12)" stroke="#f8fafc" stroke-width="2"/>
+    <g stroke="#f8fafc" stroke-width="1.2" opacity=".8">
+      <path d="M0 42H520M0 84H520M0 126H520M0 168H520M0 210H520M0 252H520M0 294H520"/>
+      <path d="M65 0V330M130 0V330M195 0V330M260 0V330M325 0V330M390 0V330M455 0V330"/>
     </g>
-    <g fill="#ecfdf5">
-      <circle cx="386" cy="192" r="7"/><circle cx="443" cy="169" r="7"/><circle cx="515" cy="194" r="7"/>
-      <circle cx="580" cy="238" r="7"/><circle cx="340" cy="252" r="6"/><circle cx="466" cy="232" r="6"/>
+    <g opacity=".88">
+      <rect x="76" y="68" width="66" height="30" rx="3" fill="#bfe7de"/>
+      <rect x="188" y="67" width="69" height="30" rx="3" fill="#cdf5ef"/>
+      <rect x="320" y="83" width="66" height="30" rx="3" fill="#72d6b6"/>
+      <rect x="389" y="98" width="64" height="29" rx="3" fill="#b8efe6"/>
+      <rect x="258" y="139" width="70" height="30" rx="3" fill="#8ed9c9"/>
+      <rect x="330" y="154" width="66" height="30" rx="3" fill="#f0d491"/>
+      <rect x="397" y="154" width="62" height="30" rx="3" fill="#d4b66e"/>
+      <rect x="130" y="196" width="68" height="30" rx="3" fill="#d0f0e8"/>
+      <rect x="260" y="210" width="70" height="30" rx="3" fill="#b8eadc"/>
+      <rect x="390" y="238" width="65" height="30" rx="3" fill="#52b992"/>
+    </g>
+    <g fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" opacity=".75">
+      <text x="28" y="36">Exc</text>
+      <text x="83" y="36">A</text><text x="148" y="36">B</text><text x="213" y="36">C</text>
+      <text x="278" y="36">D</text><text x="343" y="36">E</text><text x="408" y="36">F</text><text x="473" y="36">G</text>
     </g>
   </g>
-  <g filter="url(#dataShadow)">
-    <rect x="504" y="68" width="150" height="104" rx="12" fill="#ffffff" opacity=".88"/>
-    <path d="M530 136c16-30 34-17 49-43 18 38 36 15 52 43" fill="none" stroke="#22c55e" stroke-width="5" stroke-linecap="round"/>
-    <path d="M530 88h94M530 108h68" stroke="#dcfce7" stroke-width="8" stroke-linecap="round"/>
+  <g transform="translate(24 24)">
+    <rect width="34" height="34" rx="9" fill="#126d69"/>
+    <path d="M9 24V8h16v7h-7v9z" fill="#e9f7ee"/>
+    <path d="M18 24c6-2 9-6 10-14-7 1-12 4-14 10" fill="none" stroke="#f2cf7d" stroke-width="3" stroke-linecap="round"/>
+    <text x="48" y="16" fill="#0f5f5d" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="800">Data Modeling Studio</text>
+    <text x="48" y="36" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700">실험 데이터 모델링 플랫폼</text>
   </g>
+  <rect x="856" y="22" width="72" height="34" rx="8" fill="#135f61"/>
+  <text x="883" y="45" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800">로그인</text>
+  <g transform="translate(30 238)">
+    <text x="0" y="0" fill="#526961" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="900" letter-spacing="2">DOE · RSM · VALIDATION · ADVANCED MODELING</text>
+    <text x="0" y="56" fill="#0d1714" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="900">실험 데이터가</text>
+    <text x="0" y="112" fill="#0d1714" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="900">모델이 되는 순간</text>
+    <text x="0" y="150" fill="#33413d" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="800">Excel 데이터를 넣으면 모델과 보고서까지 이어집니다.</text>
+    <rect x="0" y="180" width="80" height="36" rx="8" fill="#135f61"/>
+    <text x="24" y="204" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="800">시작하기</text>
+  </g>
+  <g transform="translate(24 468)" filter="url(#shadow)">
+    <g fill="rgba(255,255,255,.78)" stroke="#fff">
+      <rect x="0" y="0" width="126" height="48" rx="7"/>
+      <rect x="140" y="0" width="126" height="48" rx="7"/>
+      <rect x="280" y="0" width="126" height="48" rx="7"/>
+      <rect x="420" y="0" width="126" height="48" rx="7"/>
+    </g>
+    <g fill="#0f5f5d" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="900">
+      <text x="12" y="18">Excel 그대로</text>
+      <text x="152" y="18">모델 자동 판단</text>
+      <text x="292" y="18">다음 실험 추천</text>
+      <text x="432" y="18">보고서와 계산기</text>
+    </g>
+  </g>
+  <path d="M820 510c18-8 26-20 31-39 7 18 16 29 34 36-18 7-27 18-34 37-6-18-15-30-31-34z" fill="#ffffff" opacity=".4"/>
 </svg>
