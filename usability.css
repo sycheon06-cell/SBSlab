@@ -133,47 +133,17 @@
     position: relative;
 }
 
-.software-card .software-thumb img,
-.tool-detail-image img {
+.software-card[data-tool-card="optimization"] .software-thumb img,
+.tool-detail-image:has(img[src$="optimization-studio.jpg"]) img {
     opacity: 0;
-}
-
-.software-card .software-thumb::before,
-.tool-detail-image::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background: linear-gradient(135deg, #eef7ff, #ffffff);
-}
-
-.software-card[data-tool-card="building"] .software-thumb::before,
-.tool-detail-image:has(img[src$="building-simulation.jpg"])::before {
-    background: url("images/software/building-simulation.svg") center / cover no-repeat;
-}
-
-.software-card[data-tool-card="cfd"] .software-thumb::before,
-.tool-detail-image:has(img[src$="cfd-workbench.jpg"])::before {
-    background: url("images/software/cfd-workbench.svg") center / cover no-repeat;
-}
-
-.software-card[data-tool-card="membrane"] .software-thumb::before,
-.tool-detail-image:has(img[src$="membrane-designer.jpg"])::before {
-    background: url("images/software/membrane-designer.svg") center / cover no-repeat;
-}
-
-.software-card[data-tool-card="psychrometric"] .software-thumb::before,
-.tool-detail-image:has(img[src$="psychrometric-chart.jpg"])::before {
-    background: url("images/software/psychrometric-chart.svg") center / cover no-repeat;
-}
-
-.software-card[data-tool-card="modeling"] .software-thumb::before,
-.tool-detail-image:has(img[src$="data-modeling-studio.jpg"])::before {
-    background: url("images/software/data-modeling-studio.svg") center / cover no-repeat;
 }
 
 .software-card[data-tool-card="optimization"] .software-thumb::before,
 .tool-detail-image:has(img[src$="optimization-studio.jpg"])::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
     background: url("images/software/optimization-studio.svg") center / cover no-repeat;
 }
 
