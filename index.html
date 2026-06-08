@@ -36,6 +36,7 @@
 <link href="style.css" rel="stylesheet"/>
 <link href="brand.css" rel="stylesheet"/>
 <link href="researcher.css" rel="stylesheet"/>
+<link href="software.css" rel="stylesheet"/>
 <link href="usability.css" rel="stylesheet"/>
 </head>
 <body>
@@ -51,6 +52,7 @@
 <li><a href="#research">Research</a></li>
 <li><a href="#publications">Publications</a></li>
 <li><a href="#team">Researcher</a></li>
+<li><a href="#software">Software</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-navigation">
@@ -293,6 +295,145 @@
 </ul>
 </article>
 </div>
+</div>
+</section>
+<!-- Software & Tools Section -->
+<section class="section software-section" id="software">
+<div class="container">
+<h2 class="section-title">Software &amp; Tools</h2>
+<div class="software-heading">
+<p>Research software prototypes and web tools for building energy simulation, CFD analysis, membrane humidification, psychrometric calculation, data modeling, and optimization workflows.</p>
+</div>
+
+<div class="software-grid">
+<article class="software-card" data-tool-card="building">
+<div class="software-thumb">
+<img alt="Building simulation dashboard thumbnail" src="images/software/building-simulation.jpg"/>
+<span class="software-status soon"><i class="fas fa-clock"></i> Coming Soon</span>
+</div>
+<div class="software-body">
+<h3>Building Simulation Studio</h3>
+<p>Web-based EnergyPlus workflow for model setup, simulation, and result review.</p>
+<div class="software-tags">
+<span class="software-tag">EnergyPlus</span>
+<span class="software-tag">Building energy</span>
+</div>
+<div class="software-actions">
+<span class="software-action disabled"><i class="fas fa-hourglass-half"></i> Coming Soon</span>
+<button class="software-action" data-tool-button="building" type="button">Details</button>
+</div>
+</div>
+</article>
+
+<article class="software-card" data-tool-card="cfd">
+<div class="software-thumb">
+<img alt="CFD airflow visualization thumbnail" src="images/software/cfd-workbench.jpg"/>
+<span class="software-status research"><i class="fas fa-wind"></i> Local Research Tool</span>
+</div>
+<div class="software-body">
+<h3>CFD Simulation Workbench</h3>
+<p>OpenFOAM-based airflow and thermal field analysis with automated post-processing.</p>
+<div class="software-tags">
+<span class="software-tag">OpenFOAM</span>
+<span class="software-tag">Airflow analysis</span>
+</div>
+<div class="software-actions">
+<button class="software-action primary" data-tool-button="cfd" type="button">View Example</button>
+<button class="software-action" data-tool-button="cfd" type="button">Details</button>
+</div>
+</div>
+</article>
+
+<article class="software-card" data-tool-card="membrane">
+<div class="software-thumb">
+<img alt="Web membrane humidifier configurator thumbnail" src="images/software/membrane-designer.jpg"/>
+<span class="software-status"><i class="fas fa-droplet"></i> Live Web App</span>
+</div>
+<div class="software-body">
+<h3>Membrane Designer</h3>
+<p>Web membrane humidifier analysis and design workspace for hollow fiber membrane systems.</p>
+<div class="software-tags">
+<span class="software-tag">Membrane humidifier</span>
+<span class="software-tag">Web tool</span>
+</div>
+<div class="software-actions">
+<a class="software-action primary" href="https://webmembranehumidifier.vercel.app/?verify=ux12" rel="noopener" target="_blank">Launch App</a>
+<button class="software-action" data-tool-button="membrane" type="button">Details</button>
+</div>
+</div>
+</article>
+
+<article class="software-card" data-tool-card="psychrometric">
+<div class="software-thumb">
+<img alt="Interactive psychnometric chart thumbnail" src="images/software/psychrometric-chart.jpg"/>
+<span class="software-status"><i class="fas fa-chart-line"></i> Live Web App</span>
+</div>
+<div class="software-body">
+<h3>Psychrometric Chart</h3>
+<p>Interactive psychrometric calculations and chart-based state point analysis.</p>
+<div class="software-tags">
+<span class="software-tag">Moist air</span>
+<span class="software-tag">Web tool</span>
+</div>
+<div class="software-actions">
+<a class="software-action primary" href="https://psychrometric-chart-web.vercel.app/" rel="noopener" target="_blank">Launch App</a>
+<button class="software-action" data-tool-button="psychrometric" type="button">Details</button>
+</div>
+</div>
+</article>
+
+<article class="software-card" data-tool-card="modeling">
+<div class="software-thumb">
+<img alt="Data Modeling Studio green thumbnail" src="images/software/data-modeling-studio.jpg"/>
+<span class="software-status"><i class="fas fa-diagram-project"></i> Live Web App</span>
+</div>
+<div class="software-body">
+<h3>Data Modeling Studio</h3>
+<p>DOE, RSM, validation, and AI-assisted surrogate modeling from experiment data.</p>
+<div class="software-tags">
+<span class="software-tag">DOE/RSM</span>
+<span class="software-tag">Surrogate modeling</span>
+</div>
+<div class="software-actions">
+<a class="software-action primary" href="https://doe-modeler-ai-demo.vercel.app/" rel="noopener" target="_blank">Launch App</a>
+<button class="software-action" data-tool-button="modeling" type="button">Details</button>
+</div>
+</div>
+</article>
+
+<article class="software-card" data-tool-card="optimization">
+<div class="software-thumb">
+<img alt="Optimization surface thumbnail" src="images/software/optimization-studio.jpg"/>
+<span class="software-status soon"><i class="fas fa-clock"></i> Coming Soon</span>
+</div>
+<div class="software-body">
+<h3>Optimization Studio</h3>
+<p>General optimization workspace for system design, parameter studies, and decision support.</p>
+<div class="software-tags">
+<span class="software-tag">Optimization</span>
+<span class="software-tag">Decision support</span>
+</div>
+<div class="software-actions">
+<span class="software-action disabled"><i class="fas fa-hourglass-half"></i> Coming Soon</span>
+<button class="software-action" data-tool-button="optimization" type="button">Details</button>
+</div>
+</div>
+</article>
+</div>
+
+<section class="tool-detail" id="tool-detail" aria-live="polite">
+<div class="tool-detail-image">
+<img alt="Selected software tool preview" id="tool-detail-img" src="images/software/membrane-designer.jpg"/>
+</div>
+<div class="tool-detail-copy">
+<span class="software-status" id="tool-detail-status"><i class="fas fa-droplet"></i> Live Web App</span>
+<h3 id="tool-detail-title">Membrane Designer</h3>
+<p id="tool-detail-text">This web tool supports membrane humidifier analysis and configuration workflows. It can be linked directly from the homepage so visitors can try the tool from the Software &amp; Tools section.</p>
+<div class="software-actions" id="tool-detail-actions">
+<a class="software-action primary" href="https://webmembranehumidifier.vercel.app/?verify=ux12" rel="noopener" target="_blank">Launch App</a>
+</div>
+</div>
+</section>
 </div>
 </section>
 <!-- Contact Section -->

@@ -154,6 +154,91 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const toolDetails = {
+        building: {
+            title: 'Building Simulation Studio',
+            image: 'images/software/building-simulation.jpg',
+            status: '<i class="fas fa-clock"></i> Coming Soon',
+            statusClass: 'software-status soon',
+            text: 'A planned web-based EnergyPlus workflow for building model setup, simulation runs, and performance review. This can be introduced now as a coming-soon research software direction.',
+            actions: '<span class="software-action disabled"><i class="fas fa-hourglass-half"></i> Coming Soon</span>'
+        },
+        cfd: {
+            title: 'CFD Simulation Workbench',
+            image: 'images/software/cfd-workbench.jpg',
+            status: '<i class="fas fa-wind"></i> Local Research Tool',
+            statusClass: 'software-status research',
+            text: 'A local OpenFOAM-based workflow for indoor airflow, thermal distribution, and HVAC-related flow fields. The homepage can show example images first, then link to a web version later if deployed.',
+            actions: '<span class="software-action primary">View Example</span>'
+        },
+        membrane: {
+            title: 'Membrane Designer',
+            image: 'images/software/membrane-designer.jpg',
+            status: '<i class="fas fa-droplet"></i> Live Web App',
+            statusClass: 'software-status',
+            text: 'A web membrane humidifier configurator for hollow fiber membrane systems. This is suitable as a live tool because visitors can directly open and test the app.',
+            actions: '<a class="software-action primary" href="https://webmembranehumidifier.vercel.app/?verify=ux12" rel="noopener" target="_blank">Launch App</a>'
+        },
+        psychrometric: {
+            title: 'Psychrometric Chart',
+            image: 'images/software/psychrometric-chart.jpg',
+            status: '<i class="fas fa-chart-line"></i> Live Web App',
+            statusClass: 'software-status',
+            text: 'An interactive psychrometric chart for humid air properties and HVAC process visualization. This should be linked as a practical calculator-style tool.',
+            actions: '<a class="software-action primary" href="https://psychrometric-chart-web.vercel.app/" rel="noopener" target="_blank">Launch App</a>'
+        },
+        modeling: {
+            title: 'Data Modeling Studio',
+            image: 'images/software/data-modeling-studio.jpg',
+            status: '<i class="fas fa-diagram-project"></i> Live Web App',
+            statusClass: 'software-status',
+            text: 'A data modeling platform for DOE, RSM, validation, and AI-assisted surrogate modeling. The green thumbnail keeps this tool visually distinct from Optimization Studio.',
+            actions: '<a class="software-action primary" href="https://doe-modeler-ai-demo.vercel.app/" rel="noopener" target="_blank">Launch App</a>'
+        },
+        optimization: {
+            title: 'Optimization Studio',
+            image: 'images/software/optimization-studio.jpg',
+            status: '<i class="fas fa-clock"></i> Coming Soon',
+            statusClass: 'software-status soon',
+            text: 'A planned general optimization workspace for system design, parameter studies, and decision support. The wording avoids limiting it to HVAC only.',
+            actions: '<span class="software-action disabled"><i class="fas fa-hourglass-half"></i> Coming Soon</span>'
+        }
+    };
+
+    function showToolDetail(key) {
+        const detail = toolDetails[key];
+        const detailSection = document.getElementById('tool-detail');
+        const detailImg = document.getElementById('tool-detail-img');
+        const detailStatus = document.getElementById('tool-detail-status');
+        const detailTitle = document.getElementById('tool-detail-title');
+        const detailText = document.getElementById('tool-detail-text');
+        const detailActions = document.getElementById('tool-detail-actions');
+        if (!detail || !detailSection || !detailImg || !detailStatus || !detailTitle || !detailText || !detailActions) return;
+
+        detailImg.src = detail.image;
+        detailImg.alt = `${detail.title} preview`;
+        detailStatus.className = detail.statusClass;
+        detailStatus.innerHTML = detail.status;
+        detailTitle.textContent = detail.title;
+        detailText.textContent = detail.text;
+        detailActions.innerHTML = detail.actions;
+        detailSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    document.querySelectorAll('[data-tool-card]').forEach((card) => {
+        card.addEventListener('click', (event) => {
+            if (event.target.closest('a, button')) return;
+            showToolDetail(card.dataset.toolCard);
+        });
+    });
+
+    document.querySelectorAll('[data-tool-button]').forEach((button) => {
+        button.addEventListener('click', (event) => {
+            event.stopPropagation();
+            showToolDetail(button.dataset.toolButton);
+        });
+    });
+
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const revealObserver = !prefersReducedMotion && 'IntersectionObserver' in window
         ? new IntersectionObserver((entries, observer) => {
@@ -177,6 +262,6 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(element);
     };
 
-    document.querySelectorAll('.section-title, .about-text, .card, .detailed-item, .team-member, .contact-wrapper')
+    document.querySelectorAll('.section-title, .about-text, .card, .detailed-item, .team-member, .software-card, .tool-detail, .contact-wrapper')
         .forEach((element) => window.observeReveal(element));
 });
