@@ -188,11 +188,13 @@
     .frame {
       width: 100%;
       max-width: 392px;
+      min-width: 0;
       margin: 0 auto;
       aspect-ratio: 1;
       display: grid;
       place-items: center;
       padding: 14px;
+      overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 8px;
       background:
@@ -204,7 +206,7 @@
       background-size: 20px 20px;
     }
 
-    canvas { display: block; width: 100%; max-width: 360px; height: auto; image-rendering: pixelated; box-shadow: 0 12px 28px rgba(23, 32, 51, .15); }
+    canvas { display: block; width: 100%; max-width: 360px; min-width: 0; height: auto; image-rendering: pixelated; box-shadow: 0 12px 28px rgba(23, 32, 51, .15); }
 
     .meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0; }
     .meta div { min-width: 0; padding: 11px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
@@ -231,7 +233,8 @@
       .actions button { flex: 1 1 120px; min-height: 48px; }
       .meta { grid-template-columns: minmax(0, 1fr); }
       select { min-height: 48px; }
-      .frame { padding: 10px; }
+      .frame { padding: 10px; max-width: 100%; }
+      canvas { width: calc(100vw - 86px); max-width: 280px; }
     }
   </style>
 </head>
