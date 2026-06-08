@@ -40,3 +40,28 @@
     border-radius: 50%;
     background: var(--secondary-color);
 }
+
+.timeline-list li {
+    display: grid;
+    grid-template-columns: 145px 1fr;
+    gap: 14px;
+    align-items: start;
+}
+
+.timeline-date {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.timeline-text {
+    color: #64748b;
+}
+
+@media (max-width: 640px) {
+    .timeline-list li {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+}
