@@ -1,7 +1,8 @@
 // publications.js
 // Renders Journal Papers and Conference Proceedings from data/publications.json
 // Sorting: year DESC, then within_year_order ASC (newest-first within a year)
-// No PDF/DOI/Google Scholar links are generated.
+// Google Scholar links are generated from each title.
+// DOI/PDF buttons are shown when doi, url, pdf, or pdf_url fields are provided.
 
 document.addEventListener('DOMContentLoaded', async () => {
   const JOURNAL_LIST_ID = 'journal-list';
@@ -10,11 +11,88 @@ document.addEventListener('DOMContentLoaded', async () => {
   const BTN_JOURNAL_ID = 'show-more-journals-btn';
   const BTN_CONF_ID = 'show-more-conf-btn';
 
-  const INITIAL_SHOW_JOURNALS = 3;
+  const INITIAL_SHOW_JOURNALS = 5;
   const INITIAL_SHOW_PROCEEDINGS = 3;
+
+  const FALLBACK_PUBLICATIONS = {
+    journal_papers: [
+      {
+        year: 2026,
+        title: 'Cyclic sweep gas membrane humidity pump for high-efficiency dehumidification with imperfect membranes',
+        authors: 'SY Cheon, HJ Cho, MA Rahman, A Fix, DM Warsinger',
+        venue: 'Energy Conversion and Management 358, 121471 (IF 10.9, Top 2.34%)',
+        within_year_order: 0,
+      },
+      {
+        year: 2026,
+        title: 'Membrane-based quasi-isothermal humidifier: Performance characteristics and energy-exergy analysis for HVAC applications',
+        authors: 'SY Cheon, HJ Cho, JW Jeong',
+        venue: 'Journal of Building Engineering 125, 116139 (IF 7.4, Top 5.46%)',
+        within_year_order: 1,
+      },
+      {
+        year: 2026,
+        title: 'Energy saving potential of run-around heat recovery coil-assisted air-conditioning system for retrofitted buildings',
+        authors: 'HJ Cho, SY Cheon, H Lim',
+        venue: 'Applied Thermal Engineering 289, 129785 (IF 6.9, Top 4.95%)',
+        within_year_order: 2,
+      },
+      {
+        year: 2026,
+        title: 'Performance and sizing of vacuum membrane dehumidification in varied building types and climate zones',
+        authors: 'MA Rahman, AJ Fix, J Oh, SY Cheon, HJ Cho, DM Warsinger',
+        venue: 'Energy and Buildings 353, 116904',
+        within_year_order: 3,
+      },
+      {
+        year: 2026,
+        title: 'Experimental performance evaluation of isothermal dehumidification and indirect evaporative cooling-assisted dedicated outdoor air system',
+        authors: 'HJ Cho, SY Cheon, K Jang, B Kim, JW Jeong',
+        venue: 'Energy Conversion and Management 348, 120715 (IF 10.9, Top 2.34%)',
+        within_year_order: 4,
+      },
+    ],
+    proceedings: [
+      {
+        year: 2025,
+        title: 'The Feasibility Study on the Hollow Fiber Membrane Dehumidification System Coupling with Conventional Air Conditioning System',
+        authors: 'K Tsuji, G Yoon, HJ Cho, SY Cheon, JW Jeong',
+        venue: 'REHVA HVAC World Congress 792-800',
+        within_year_order: 0,
+      },
+      {
+        year: 2025,
+        title: 'Experimental Investigation of Vacuum-Based Membrane Dehumidification and Evaporative Cooling-Assisted Dedicated Outdoor Air System',
+        authors: 'HJ Cho, SY Cheon, JW Jeong',
+        venue: 'ASHRAE Transactions 131 (Pt 2), 411-418',
+        within_year_order: 1,
+      },
+    ],
+  };
 
   function safeText(s) {
     return (s ?? '').toString();
+  }
+
+  function normalizeDoi(doi) {
+    const raw = safeText(doi).trim();
+    if (!raw) return '';
+    return raw.replace(/^https?:\/\/(dx\.)?doi\.org\//i, '');
+  }
+
+  function makeScholarUrl(pub) {
+    const query = [pub.title, pub.authors].filter(Boolean).join(' ');
+    return `https://scholar.google.com/scholar?q=${encodeURIComponent(query)}`;
+  }
+
+  function createActionLink({ href, label, iconClass }) {
+    const link = document.createElement('a');
+    link.className = 'pub-action';
+    link.href = href;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.innerHTML = `<i class="${iconClass}"></i> ${label}`;
+    return link;
   }
 
   function sortPubs(a, b) {
@@ -52,9 +130,47 @@ document.addEventListener('DOMContentLoaded', async () => {
     venue.className = 'venue';
     venue.textContent = safeText(pub.venue);
 
+    const actions = document.createElement('div');
+    actions.className = 'pub-actions';
+
+    const doi = normalizeDoi(pub.doi);
+    const directUrl = safeText(pub.url || pub.link).trim();
+    const pdfUrl = safeText(pub.pdf || pub.pdf_url).trim();
+
+    if (directUrl || doi) {
+      actions.appendChild(createActionLink({
+        href: directUrl || `https://doi.org/${doi}`,
+        label: 'Paper',
+        iconClass: 'fas fa-arrow-up-right-from-square',
+      }));
+    }
+
+    actions.appendChild(createActionLink({
+      href: makeScholarUrl(pub),
+      label: 'Scholar',
+      iconClass: 'fas fa-graduation-cap',
+    }));
+
+    if (doi) {
+      actions.appendChild(createActionLink({
+        href: `https://doi.org/${doi}`,
+        label: 'DOI',
+        iconClass: 'fas fa-link',
+      }));
+    }
+
+    if (pdfUrl) {
+      actions.appendChild(createActionLink({
+        href: pdfUrl,
+        label: 'PDF',
+        iconClass: 'fas fa-file-pdf',
+      }));
+    }
+
     contentDiv.appendChild(h4);
     contentDiv.appendChild(authors);
     contentDiv.appendChild(venue);
+    contentDiv.appendChild(actions);
 
     item.appendChild(yearDiv);
     item.appendChild(contentDiv);
@@ -80,6 +196,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     nodes.forEach((n, idx) => {
       if (idx >= initialShow) n.style.display = 'none';
       containerEl.appendChild(n);
+      if (window.observeReveal) window.observeReveal(n);
     });
 
     const canToggle = items.length > initialShow;
@@ -130,7 +247,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   try {
-    const data = await loadData();
+    const data = await loadData().catch(() => FALLBACK_PUBLICATIONS);
 
     const journalPapers = Array.isArray(data.journal_papers) ? data.journal_papers.slice() : [];
     const proceedings = Array.isArray(data.proceedings) ? data.proceedings.slice() : [];
@@ -162,7 +279,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       lessLabel: 'Show Less Proceedings <i class="fas fa-chevron-up"></i>',
     });
   } catch (err) {
-    // Fail silently in UI, but log for debugging
     console.error(err);
   }
 });
