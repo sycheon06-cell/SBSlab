@@ -16,6 +16,12 @@
     margin-bottom: 18px;
 }
 
+.member-img {
+    object-fit: cover;
+    object-position: center 28%;
+    background: var(--light-bg);
+}
+
 .researcher-list {
     list-style: none;
     margin: 0;
