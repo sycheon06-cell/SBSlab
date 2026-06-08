@@ -1,124 +1,182 @@
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
-    const links = document.querySelectorAll('.nav-links li');
+    const navItems = document.querySelectorAll('.nav-links li');
+    const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
 
-    // Toggle Mobile Menu
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
+    function setMobileMenu(open) {
+        if (!hamburger || !navLinks) return;
 
-        // Animate Links
-        links.forEach((link, index) => {
-            if (link.style.animation) {
-                link.style.animation = '';
-            } else {
-                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+        navLinks.classList.toggle('active', open);
+        hamburger.classList.toggle('toggle', open);
+        hamburger.setAttribute('aria-expanded', String(open));
+
+        navItems.forEach((link, index) => {
+            link.style.animation = open ? `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s` : '';
+        });
+    }
+
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            setMobileMenu(!navLinks.classList.contains('active'));
+        });
+
+        hamburger.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                setMobileMenu(!navLinks.classList.contains('active'));
             }
         });
 
-        // Burger Animation
-        hamburger.classList.toggle('toggle');
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') setMobileMenu(false);
+        });
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (event) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (!target) return;
+
+            event.preventDefault();
+            setMobileMenu(false);
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
     });
 
-    // Smooth Scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
+    const sections = Array.from(navAnchors)
+        .map((anchor) => document.querySelector(anchor.getAttribute('href')))
+        .filter(Boolean);
 
-            // Close mobile menu if open
-            if (navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('toggle');
-            }
+    if ('IntersectionObserver' in window && sections.length) {
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
 
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
+                navAnchors.forEach((anchor) => {
+                    const isActive = anchor.getAttribute('href') === `#${entry.target.id}`;
+                    anchor.classList.toggle('active', isActive);
+                    if (isActive) {
+                        anchor.setAttribute('aria-current', 'page');
+                    } else {
+                        anchor.removeAttribute('aria-current');
+                    }
+                });
             });
-        });
-    });
+        }, { rootMargin: '-45% 0px -50% 0px', threshold: 0.01 });
 
-    // Show More Journals
-    const showMoreJournalsBtn = document.getElementById('show-more-journals-btn');
-    const hiddenJournals = document.getElementById('hidden-journals');
-
-    if (showMoreJournalsBtn && hiddenJournals) {
-        showMoreJournalsBtn.addEventListener('click', () => {
-            if (hiddenJournals.style.display === 'none') {
-                hiddenJournals.style.display = 'block';
-                showMoreJournalsBtn.innerHTML = 'Show Less Journals <i class="fas fa-chevron-up"></i>';
-            } else {
-                hiddenJournals.style.display = 'none';
-                showMoreJournalsBtn.innerHTML = 'Show More Journals <i class="fas fa-chevron-down"></i>';
-            }
-        });
+        sections.forEach((section) => navObserver.observe(section));
     }
 
-    // Show More Conferences
-    const showMoreConferencesBtn = document.getElementById('show-more-conferences-btn');
-    const hiddenConferences = document.getElementById('hidden-conferences');
-
-    if (showMoreConferencesBtn && hiddenConferences) {
-        showMoreConferencesBtn.addEventListener('click', () => {
-            if (hiddenConferences.style.display === 'none') {
-                hiddenConferences.style.display = 'block';
-                showMoreConferencesBtn.innerHTML = 'Show Less Conferences <i class="fas fa-chevron-up"></i>';
-            } else {
-                hiddenConferences.style.display = 'none';
-                showMoreConferencesBtn.innerHTML = 'Show More Conferences <i class="fas fa-chevron-down"></i>';
-            }
-        });
-    }
-
-    // Contact Form Handling
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            // Get form values
-            const name = contactForm.querySelector('input[type="text"]').value;
-            const email = contactForm.querySelector('input[type="email"]').value;
-            const message = contactForm.querySelector('textarea').value;
-
-            // Simple validation (HTML5 required attribute handles most of it)
-            if (name && email && message) {
-                // Create text content
-                const textContent = `Date: ${new Date().toLocaleString()}\nName: ${name}\nEmail: ${email}\nMessage:\n${message}`;
-
-                // Create blob and download link
-                const blob = new Blob([textContent], { type: 'text/plain' });
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `inquiry_${Date.now()}.txt`;
-                document.body.appendChild(a);
-                a.click();
-                window.URL.revokeObjectURL(url);
-                document.body.removeChild(a);
-
-                // Simulate sending
-                alert(`Thank you, ${name}! Your message has been saved as a text file.\n(Check your downloads folder)`);
-                contactForm.reset();
-            }
-        });
-    }
-    // Show More Research
     const showMoreResearchBtn = document.getElementById('show-more-research-btn');
     const detailedResearch = document.getElementById('detailed-research');
 
+    function setDetailedResearch(open, targetId) {
+        if (!showMoreResearchBtn || !detailedResearch) return;
+
+        detailedResearch.style.display = open ? 'block' : 'none';
+        showMoreResearchBtn.innerHTML = open
+            ? 'Show Less Research <i class="fas fa-chevron-up"></i>'
+            : 'Show More Research <i class="fas fa-chevron-down"></i>';
+
+        if (!open) return;
+
+        const target = targetId ? document.getElementById(targetId) : detailedResearch;
+        if (!target) return;
+
+        document.querySelectorAll('.detailed-item.is-targeted').forEach((item) => {
+            item.classList.remove('is-targeted');
+        });
+
+        target.classList.add('is-targeted');
+        setTimeout(() => target.classList.remove('is-targeted'), 1600);
+        setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+    }
+
     if (showMoreResearchBtn && detailedResearch) {
         showMoreResearchBtn.addEventListener('click', () => {
-            if (detailedResearch.style.display === 'none') {
-                detailedResearch.style.display = 'block';
-                showMoreResearchBtn.innerHTML = 'Show Less Research <i class="fas fa-chevron-up"></i>';
-                // Optional: Scroll to the detailed section
-                detailedResearch.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else {
-                detailedResearch.style.display = 'none';
-                showMoreResearchBtn.innerHTML = 'Show More Research <i class="fas fa-chevron-down"></i>';
-                // Optional: Scroll back to the button or top of research section
-                document.getElementById('research').scrollIntoView({ behavior: 'smooth' });
+            const isClosed = detailedResearch.style.display === 'none';
+            setDetailedResearch(isClosed);
+            if (!isClosed) {
+                document.getElementById('research')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
     }
+
+    document.querySelectorAll('[data-research-target]').forEach((card) => {
+        const openCardTarget = () => setDetailedResearch(true, card.dataset.researchTarget);
+
+        card.addEventListener('click', openCardTarget);
+        card.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                openCardTarget();
+            }
+        });
+    });
+
+    document.querySelectorAll('[data-copy-email]').forEach((button) => {
+        const originalText = button.innerHTML;
+
+        button.addEventListener('click', async () => {
+            const email = button.dataset.copyEmail;
+            if (!email) return;
+
+            try {
+                await navigator.clipboard.writeText(email);
+            } catch {
+                const tempInput = document.createElement('input');
+                tempInput.value = email;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+            }
+
+            button.innerHTML = '<i class="fas fa-check"></i> Copied';
+            setTimeout(() => {
+                button.innerHTML = originalText;
+            }, 1600);
+        });
+    });
+
+    const backToTopBtn = document.getElementById('back-to-top');
+    if (backToTopBtn) {
+        const updateBackToTop = () => {
+            backToTopBtn.classList.toggle('visible', window.scrollY > 500);
+        };
+
+        window.addEventListener('scroll', updateBackToTop, { passive: true });
+        updateBackToTop();
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const revealObserver = !prefersReducedMotion && 'IntersectionObserver' in window
+        ? new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' })
+        : null;
+
+    window.observeReveal = (element) => {
+        if (!element) return;
+        element.classList.add('reveal');
+
+        if (prefersReducedMotion || !revealObserver) {
+            element.classList.add('is-visible');
+            return;
+        }
+
+        revealObserver.observe(element);
+    };
+
+    document.querySelectorAll('.section-title, .about-text, .card, .detailed-item, .team-member, .contact-wrapper')
+        .forEach((element) => window.observeReveal(element));
 });
