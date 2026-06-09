@@ -171,11 +171,15 @@
 .software-card[data-tool-card="psychrometric"] .software-thumb::before,
 .tool-detail-image:has(img[src$="psychrometric-chart.jpg"])::before {
     background-image: url("images/software/psychrometric-chart.jpg");
+    background-color: #f8fafc;
+    background-size: contain;
 }
 
 .software-card[data-tool-card="modeling"] .software-thumb::before,
 .tool-detail-image:has(img[src$="data-modeling-studio.jpg"])::before {
     background-image: url("images/software/data-modeling-studio.jpg");
+    background-color: #f8fafc;
+    background-size: contain;
 }
 
 .software-card[data-tool-card="optimization"] .software-thumb::before,
