@@ -4,6 +4,15 @@
 // Google Scholar links are generated from each title.
 // DOI/PDF buttons are shown when doi, url, pdf, or pdf_url fields are provided.
 
+(function loadDesktopMotionScript() {
+  if (document.querySelector('script[src*="motion.js"]')) return;
+
+  const script = document.createElement('script');
+  script.src = 'motion.js?v=20260609';
+  script.defer = true;
+  document.head.appendChild(script);
+}());
+
 document.addEventListener('DOMContentLoaded', async () => {
   const JOURNAL_LIST_ID = 'journal-list';
   const CONF_LIST_ID = 'conf-list';
