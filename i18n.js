@@ -297,6 +297,10 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => applyLanguage(button.dataset.lang));
     });
 
+    document.querySelectorAll('[data-tool-button]').forEach((button) => {
+        button.addEventListener('click', () => setTimeout(applyStatic, 0));
+    });
+
     document.addEventListener('click', (event) => {
         if (event.target.closest('[data-research-target], [data-tool-card], [data-tool-button], #show-more-research-btn, [data-copy-email]')) {
             setTimeout(applyStatic, 0);
