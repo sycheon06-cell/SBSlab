@@ -210,6 +210,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     let expanded = false;
 
+    function getLabel(key, fallback) {
+      return window.SBES_I18N?.html(key) || fallback;
+    }
+
     function apply() {
       nodes.forEach((n, idx) => {
         if (expanded) {
@@ -218,7 +222,9 @@ document.addEventListener('DOMContentLoaded', async () => {
           n.style.display = idx < initialShow ? '' : 'none';
         }
       });
-      buttonEl.innerHTML = expanded ? lessLabel : moreLabel;
+      buttonEl.innerHTML = expanded
+        ? getLabel(buttonEl.dataset.lessLabelKey, lessLabel)
+        : getLabel(buttonEl.dataset.moreLabelKey, moreLabel);
     }
 
     // Reset button state
@@ -236,6 +242,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         nodes[initialShow].scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     };
+
+    document.addEventListener('sbes:languagechange', apply);
   }
 
   async function loadData() {
@@ -260,6 +268,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const btnJournal = document.getElementById(BTN_JOURNAL_ID);
     const btnConf = document.getElementById(BTN_CONF_ID);
+
+    if (btnJournal) {
+      btnJournal.dataset.moreLabelKey = 'publications.moreJournals';
+      btnJournal.dataset.lessLabelKey = 'publications.lessJournals';
+    }
+
+    if (btnConf) {
+      btnConf.dataset.moreLabelKey = 'publications.moreProceedings';
+      btnConf.dataset.lessLabelKey = 'publications.lessProceedings';
+    }
 
     renderWithShowMore({
       containerEl: journalContainer,
