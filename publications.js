@@ -8,7 +8,7 @@
   if (document.querySelector('script[src*="motion.js"]')) return;
 
   const script = document.createElement('script');
-  script.src = 'motion.js?v=20260609';
+  script.src = 'motion.js?v=20260609c';
   script.defer = true;
   document.head.appendChild(script);
 }());
