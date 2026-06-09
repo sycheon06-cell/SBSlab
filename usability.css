@@ -152,32 +152,32 @@
 
 .software-card[data-tool-card="building"] .software-thumb::before,
 .tool-detail-image:has(img[src$="building-simulation.jpg"])::before {
-    background-image: url("images/software/building-simulation.svg");
+    background-image: url("images/software/building-simulation.png");
 }
 
 .software-card[data-tool-card="cfd"] .software-thumb::before,
 .tool-detail-image:has(img[src$="cfd-workbench.jpg"])::before {
-    background-image: url("images/software/cfd-workbench.svg");
+    background-image: url("images/software/cfd-workbench.png");
 }
 
 .software-card[data-tool-card="membrane"] .software-thumb::before,
 .tool-detail-image:has(img[src$="membrane-designer.jpg"])::before {
-    background-image: url("images/software/membrane-designer.svg");
+    background-image: url("images/software/membrane-designer.png");
 }
 
 .software-card[data-tool-card="psychrometric"] .software-thumb::before,
 .tool-detail-image:has(img[src$="psychrometric-chart.jpg"])::before {
-    background-image: url("images/software/psychrometric-chart.svg");
+    background-image: url("images/software/psychrometric-chart.jpg");
 }
 
 .software-card[data-tool-card="modeling"] .software-thumb::before,
 .tool-detail-image:has(img[src$="data-modeling-studio.jpg"])::before {
-    background-image: url("images/software/data-modeling-studio.svg");
+    background-image: url("images/software/data-modeling-studio.jpg");
 }
 
 .software-card[data-tool-card="optimization"] .software-thumb::before,
 .tool-detail-image:has(img[src$="optimization-studio.jpg"])::before {
-    background: url("images/software/optimization-studio.svg") center / cover no-repeat;
+    background-image: url("images/software/optimization-studio.png");
 }
 
 .software-card .software-status {
