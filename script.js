@@ -157,26 +157,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const toolDetails = {
         building: {
             title: 'Building Simulation Studio',
-            image: 'images/software/building-simulation.jpg',
+            image: 'images/software/building-simulation.png',
             status: '<i class="fas fa-clock"></i> Coming Soon',
             statusClass: 'software-status soon',
-            text: 'A planned web-based EnergyPlus workflow for building model setup, simulation runs, and performance review. This can be introduced now as a coming-soon research software direction.',
+            text: 'A planned web-based EnergyPlus workspace for building model setup, simulation execution, and energy performance review. The goal is to make simulation workflows easier to repeat, compare, and share from a browser.',
             actions: '<span class="software-action disabled"><i class="fas fa-hourglass-half"></i> Coming Soon</span>'
         },
         cfd: {
             title: 'CFD Simulation Workbench',
-            image: 'images/software/cfd-workbench.jpg',
+            image: 'images/software/cfd-workbench.png',
             status: '<i class="fas fa-wind"></i> Local Research Tool',
             statusClass: 'software-status research',
-            text: 'A local OpenFOAM-based workflow for indoor airflow, thermal distribution, and HVAC-related flow fields. The homepage can show example images first, then link to a web version later if deployed.',
+            text: 'A local OpenFOAM-based workflow for indoor airflow, thermal distribution, ventilation behavior, and HVAC-related flow fields. It focuses on automated case setup, post-processing, and visual outputs that can later be connected to a web interface.',
             actions: '<span class="software-action primary">View Example</span>'
         },
         membrane: {
             title: 'Membrane Designer',
-            image: 'images/software/membrane-designer.jpg',
+            image: 'images/software/membrane-designer.png',
             status: '<i class="fas fa-droplet"></i> Live Web App',
             statusClass: 'software-status',
-            text: 'A web membrane humidifier configurator for hollow fiber membrane systems. This is suitable as a live tool because visitors can directly open and test the app.',
+            text: 'A live web configurator for hollow fiber membrane humidifier systems. It supports specification review and performance calculation from user-defined operating conditions, helping visitors test membrane-based humidification concepts directly.',
             actions: '<a class="software-action primary" href="https://webmembranehumidifier.vercel.app/?verify=ux12" rel="noopener" target="_blank">Launch App</a>'
         },
         psychrometric: {
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'images/software/psychrometric-chart.jpg',
             status: '<i class="fas fa-chart-line"></i> Live Web App',
             statusClass: 'software-status',
-            text: 'An interactive psychrometric chart for humid air properties and HVAC process visualization. This should be linked as a practical calculator-style tool.',
+            text: 'A live psychrometric chart tool for moist-air properties, state-point calculation, and HVAC process visualization. It is useful for checking cooling, heating, humidification, and dehumidification paths on an interactive chart.',
             actions: '<a class="software-action primary" href="https://psychrometric-chart-web.vercel.app/" rel="noopener" target="_blank">Launch App</a>'
         },
         modeling: {
@@ -192,15 +192,15 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'images/software/data-modeling-studio.jpg',
             status: '<i class="fas fa-diagram-project"></i> Live Web App',
             statusClass: 'software-status',
-            text: 'A data modeling platform for DOE, RSM, validation, and AI-assisted surrogate modeling. The green thumbnail keeps this tool visually distinct from Optimization Studio.',
+            text: 'A live data modeling workspace for DOE, RSM, validation, and AI-assisted surrogate modeling. It helps turn experimental or simulation datasets into interpretable predictive models for design and sensitivity studies.',
             actions: '<a class="software-action primary" href="https://doe-modeler-ai-demo.vercel.app/" rel="noopener" target="_blank">Launch App</a>'
         },
         optimization: {
             title: 'Optimization Studio',
-            image: 'images/software/optimization-studio.jpg',
+            image: 'images/software/optimization-studio.png',
             status: '<i class="fas fa-clock"></i> Coming Soon',
             statusClass: 'software-status soon',
-            text: 'A planned general optimization workspace for system design, parameter studies, and decision support. The wording avoids limiting it to HVAC only.',
+            text: 'A planned general optimization workspace for design variables, constraints, objective functions, and trade-off analysis. It is positioned as a broad optimization tool rather than an HVAC-only application.',
             actions: '<span class="software-action disabled"><i class="fas fa-hourglass-half"></i> Coming Soon</span>'
         }
     };
