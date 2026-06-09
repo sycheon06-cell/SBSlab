@@ -10,10 +10,108 @@
         const showMoreResearchBtn = document.getElementById('show-more-research-btn');
         const researchSection = document.getElementById('research');
         const toolDetail = document.getElementById('tool-detail');
+        const nativeScrollIntoView = Element.prototype.scrollIntoView;
+        const nativeScrollTo = window.scrollTo.bind(window);
+        let activeScrollFrame = 0;
 
         function shouldUseDesktopMotion() {
             return desktopQuery.matches;
         }
+
+        function easeScroll(t) {
+            return t < 0.5
+                ? 4 * t * t * t
+                : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        }
+
+        function maxScrollTop() {
+            const doc = document.documentElement;
+            return Math.max(0, doc.scrollHeight - window.innerHeight);
+        }
+
+        function scrollOffset() {
+            return window.innerWidth >= 769 ? 98 : 0;
+        }
+
+        function animateScrollTo(targetY, duration = 1240) {
+            if (!shouldUseDesktopMotion()) {
+                nativeScrollTo(0, targetY);
+                return;
+            }
+
+            if (activeScrollFrame) {
+                window.cancelAnimationFrame(activeScrollFrame);
+                activeScrollFrame = 0;
+            }
+
+            const startY = window.scrollY || window.pageYOffset || 0;
+            const endY = Math.max(0, Math.min(targetY, maxScrollTop()));
+            const distance = endY - startY;
+            const startTime = window.performance?.now ? window.performance.now() : Date.now();
+
+            if (Math.abs(distance) < 2) return;
+
+            function step(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(1, elapsed / duration);
+                const eased = easeScroll(progress);
+                nativeScrollTo(0, startY + distance * eased);
+
+                if (progress < 1) {
+                    activeScrollFrame = window.requestAnimationFrame(step);
+                } else {
+                    activeScrollFrame = 0;
+                }
+            }
+
+            activeScrollFrame = window.requestAnimationFrame(step);
+        }
+
+        function scrollToElement(element, options = {}) {
+            if (!element) return;
+
+            const block = options.block || 'start';
+            const duration = options.duration || (block === 'center' ? 1160 : 1240);
+            const rect = element.getBoundingClientRect();
+            const currentY = window.scrollY || window.pageYOffset || 0;
+            let targetY = rect.top + currentY - scrollOffset();
+
+            if (block === 'center') {
+                targetY = rect.top + currentY - (window.innerHeight - rect.height) / 2;
+            }
+
+            animateScrollTo(targetY, duration);
+        }
+
+        Element.prototype.scrollIntoView = function patchedScrollIntoView(options) {
+            if (!shouldUseDesktopMotion()) {
+                nativeScrollIntoView.apply(this, arguments);
+                return;
+            }
+
+            const block = typeof options === 'object' && options ? options.block : 'start';
+            scrollToElement(this, { block });
+        };
+
+        window.scrollTo = function patchedScrollTo(x, y) {
+            if (
+                shouldUseDesktopMotion()
+                && typeof x === 'object'
+                && x
+                && x.behavior === 'smooth'
+                && typeof x.top === 'number'
+            ) {
+                animateScrollTo(x.top, 1180);
+                return;
+            }
+
+            if (typeof x === 'object') {
+                nativeScrollTo(x);
+                return;
+            }
+
+            nativeScrollTo(x, y);
+        };
 
         function currentLanguage() {
             if (window.SBES_I18N?.getLang) return window.SBES_I18N.getLang();
@@ -48,7 +146,7 @@
             if (!target) return;
             clearResearchTarget();
             target.classList.add('is-targeted');
-            window.setTimeout(() => target.classList.remove('is-targeted'), 1700);
+            window.setTimeout(() => target.classList.remove('is-targeted'), 2400);
         }
 
         function setResearchOpen(open, targetId) {
@@ -71,7 +169,7 @@
                     if (detailedResearch.dataset.motionOpen !== 'true') {
                         detailedResearch.style.display = 'none';
                     }
-                }, 520);
+                }, 1000);
                 return;
             }
 
@@ -79,7 +177,7 @@
             if (targetId) emphasizeResearchTarget(target);
 
             window.setTimeout(() => {
-                (target || detailedResearch).scrollIntoView({ behavior: 'smooth', block: 'start' });
+                scrollToElement(target || detailedResearch, { block: 'start', duration: targetId ? 1320 : 1240 });
             }, 180);
         }
 
@@ -112,7 +210,7 @@
 
                 if (!nextOpen) {
                     window.setTimeout(() => {
-                        researchSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        scrollToElement(researchSection, { block: 'start', duration: 1120 });
                     }, 90);
                 }
             }, true);
