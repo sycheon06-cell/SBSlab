@@ -151,17 +151,20 @@
 }
 
 .software-card[data-tool-card="building"] .software-thumb::before,
-.tool-detail-image:has(img[src$="building-simulation.jpg"])::before {
+.tool-detail-image:has(img[src$="building-simulation.jpg"])::before,
+.tool-detail-image:has(img[src$="building-simulation.png"])::before {
     background-image: url("images/software/building-simulation.png");
 }
 
 .software-card[data-tool-card="cfd"] .software-thumb::before,
-.tool-detail-image:has(img[src$="cfd-workbench.jpg"])::before {
+.tool-detail-image:has(img[src$="cfd-workbench.jpg"])::before,
+.tool-detail-image:has(img[src$="cfd-workbench.png"])::before {
     background-image: url("images/software/cfd-workbench.png");
 }
 
 .software-card[data-tool-card="membrane"] .software-thumb::before,
-.tool-detail-image:has(img[src$="membrane-designer.jpg"])::before {
+.tool-detail-image:has(img[src$="membrane-designer.jpg"])::before,
+.tool-detail-image:has(img[src$="membrane-designer.png"])::before {
     background-image: url("images/software/membrane-designer.png");
 }
 
@@ -176,7 +179,8 @@
 }
 
 .software-card[data-tool-card="optimization"] .software-thumb::before,
-.tool-detail-image:has(img[src$="optimization-studio.jpg"])::before {
+.tool-detail-image:has(img[src$="optimization-studio.jpg"])::before,
+.tool-detail-image:has(img[src$="optimization-studio.png"])::before {
     background-image: url("images/software/optimization-studio.png");
 }
 
