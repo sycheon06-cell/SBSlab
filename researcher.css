@@ -49,8 +49,8 @@
 
 .timeline-list li {
     display: grid;
-    grid-template-columns: 145px 1fr;
-    gap: 14px;
+    grid-template-columns: 190px 1fr;
+    gap: 18px;
     align-items: start;
 }
 
