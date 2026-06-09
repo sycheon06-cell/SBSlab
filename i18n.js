@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             'Optimization Studio': {
                 status: 'soon',
-                text: '설계 변수, 제약조건, 목적함수, trade-off를 함께 다루는 범용 최적화 도구입니다. HVAC에 한정하지 않고 다양한 시스템 설계 문제에 적용할 수 있도록 준비 중입니다.',
+                text: '설계 변수, 제약조건, 목적함수, trade-off를 함께 다루는 범용 최적화 도구입니다. 변수 설정부터 결과 비교까지 한 흐름에서 확인할 수 있도록 준비 중입니다.',
                 action: 'disabled'
             }
         }
