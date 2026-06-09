@@ -168,7 +168,7 @@
 }
 
 .software-card .software-thumb img,
-.tool-detail-image img {
+tool-detail-image img {
     opacity: 0;
 }
 
@@ -234,6 +234,96 @@
 .reveal.is-visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+@media (min-width: 769px) {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    .section,
+    .hero,
+    .software-section,
+    .tool-detail,
+    .detailed-item {
+        scroll-margin-top: 96px;
+    }
+
+    .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+            transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .detailed-research.desktop-collapsible {
+        display: block;
+        overflow: hidden;
+        max-height: 0;
+        margin-top: 0;
+        opacity: 0;
+        transform: translateY(24px);
+        animation: none;
+        pointer-events: none;
+        transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+            margin-top 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+            opacity 0.34s ease,
+            transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .detailed-research.desktop-collapsible.is-open {
+        max-height: 5200px;
+        margin-top: 60px;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .detailed-research.desktop-collapsible .detailed-item {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.34s ease, transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .detailed-research.desktop-collapsible.is-open .detailed-item {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .detailed-research.desktop-collapsible.is-open .detailed-item:nth-child(2) {
+        transition-delay: 0.04s;
+    }
+
+    .detailed-research.desktop-collapsible.is-open .detailed-item:nth-child(3) {
+        transition-delay: 0.08s;
+    }
+
+    .detailed-research.desktop-collapsible.is-open .detailed-item:nth-child(4) {
+        transition-delay: 0.12s;
+    }
+
+    .tool-detail {
+        transition: opacity 0.34s ease,
+            transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+            border-color 0.3s ease,
+            box-shadow 0.3s ease;
+        will-change: opacity, transform;
+    }
+
+    .tool-detail.is-updating {
+        opacity: 0.38;
+        transform: translateY(18px) scale(0.985);
+    }
+
+    .tool-detail.is-ready {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 @media (max-width: 768px) {
