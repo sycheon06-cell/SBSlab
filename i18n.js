@@ -126,6 +126,52 @@ document.addEventListener('DOMContentLoaded', () => {
         'publications.lessProceedings': 'Show Less Proceedings <i class="fas fa-chevron-up"></i>'
     };
 
+    const EN_TOOL_LABELS = {
+        soon: '<i class="fas fa-clock"></i> Coming Soon',
+        local: '<i class="fas fa-wind"></i> Local Research Tool',
+        live: '<i class="fas fa-droplet"></i> Live Web App',
+        liveChart: '<i class="fas fa-chart-line"></i> Live Web App',
+        liveModel: '<i class="fas fa-diagram-project"></i> Live Web App',
+        viewExample: 'View Example',
+        launch: 'Launch App'
+    };
+
+    const EN_TOOLS = {
+        'Building Simulation Studio': {
+            status: 'soon',
+            text: 'A planned web-based EnergyPlus workspace for building model setup, simulation execution, and energy performance review. The goal is to make simulation workflows easier to repeat, compare, and share from a browser.',
+            action: 'disabled'
+        },
+        'CFD Simulation Workbench': {
+            status: 'local',
+            text: 'A local OpenFOAM-based workflow for indoor airflow, thermal distribution, ventilation behavior, and HVAC-related flow fields. It focuses on automated case setup, post-processing, and visual outputs that can later be connected to a web interface.',
+            action: 'example'
+        },
+        'Membrane Designer': {
+            status: 'live',
+            text: 'A live web configurator for hollow fiber membrane humidifier systems. It supports specification review and performance calculation from user-defined operating conditions, helping visitors test membrane-based humidification concepts directly.',
+            action: 'launch',
+            href: 'https://webmembranehumidifier.vercel.app/?verify=ux12'
+        },
+        'Psychrometric Chart': {
+            status: 'liveChart',
+            text: 'A live psychrometric chart tool for moist-air properties, state-point calculation, and HVAC process visualization. It is useful for checking cooling, heating, humidification, and dehumidification paths on an interactive chart.',
+            action: 'launch',
+            href: 'https://psychrometric-chart-web.vercel.app/'
+        },
+        'Data Modeling Studio': {
+            status: 'liveModel',
+            text: 'A live data modeling workspace for DOE, RSM, validation, and AI-assisted surrogate modeling. It helps turn experimental or simulation datasets into interpretable predictive models for design and sensitivity studies.',
+            action: 'launch',
+            href: 'https://doe-modeler-ai-demo.vercel.app/'
+        },
+        'Optimization Studio': {
+            status: 'soon',
+            text: 'A planned general optimization workspace for design variables, constraints, objective functions, and trade-off analysis. It is positioned as a broad optimization tool rather than an HVAC-only application.',
+            action: 'disabled'
+        }
+    };
+
     const originals = new WeakMap();
     let currentLang = localStorage.getItem('sbes-lang') === 'ko' ? 'ko' : 'en';
 
@@ -237,25 +283,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const actionsElement = document.getElementById('tool-detail-actions');
         if (!titleElement || !statusElement || !textElement || !actionsElement) return;
 
-        const tool = KO.tools[titleElement.textContent.trim()];
+        const isKo = currentLang === 'ko';
+        const title = titleElement.textContent.trim();
+        const tool = isKo ? KO.tools[title] : EN_TOOLS[title];
+        const labels = isKo ? KO.labels : EN_TOOL_LABELS;
         [statusElement, textElement, actionsElement].forEach(remember);
 
-        if (currentLang !== 'ko' || !tool) {
-            statusElement.innerHTML = originals.get(statusElement).html;
-            textElement.textContent = originals.get(textElement).text;
-            actionsElement.innerHTML = originals.get(actionsElement).html;
-            return;
-        }
+        if (!tool) return;
 
-        statusElement.innerHTML = KO.labels[tool.status];
+        statusElement.innerHTML = labels[tool.status];
         textElement.textContent = tool.text;
 
         if (tool.action === 'launch') {
-            actionsElement.innerHTML = `<a class="software-action primary" href="${tool.href}" rel="noopener" target="_blank">${KO.labels.launch}</a>`;
+            actionsElement.innerHTML = `<a class="software-action primary" href="${tool.href}" rel="noopener" target="_blank">${labels.launch}</a>`;
         } else if (tool.action === 'example') {
-            actionsElement.innerHTML = `<span class="software-action primary">${KO.labels.viewExample}</span>`;
+            actionsElement.innerHTML = `<span class="software-action primary">${labels.viewExample}</span>`;
         } else {
-            actionsElement.innerHTML = `<span class="software-action disabled">${KO.labels.soon}</span>`;
+            actionsElement.innerHTML = `<span class="software-action disabled">${labels.soon}</span>`;
         }
     }
 
