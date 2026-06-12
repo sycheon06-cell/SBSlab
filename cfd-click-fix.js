@@ -6,15 +6,15 @@
 
     var cfdCopy = {
         en: {
-            card: 'CFD workflow for visualizing indoor airflow distribution, temperature non-uniformity, and HVAC post-processing.',
-            text: 'This example shows a dynamic mixed-plane CFD visualization for building HVAC analysis. The workflow helps review indoor airflow distribution, temperature deviation, and ventilation behavior across occupied zones.',
+            card: 'CFD workflow for reviewing indoor airflow, temperature, humidity, and CO2 fields in a 4-panel example.',
+            text: 'This 10-second 4-panel CFD example shows indoor airflow, temperature, humidity, and CO2 fields for building HVAC analysis. It is intended for checking spatial distribution, local deviations, and ventilation behavior from simulation outputs.',
             status: '<i class="fas fa-wind"></i> Local Research Tool',
             action: '<span class="software-action disabled"><i class="fas fa-desktop"></i> Local Example</span>',
             play: 'Play CFD video'
         },
         ko: {
-            card: '건물 HVAC 해석에서 실내 기류 분포, 온도 편차, 환기 거동을 시각화하는 CFD 워크플로우입니다.',
-            text: '건물 HVAC 해석을 위한 동적 mixed-plane CFD 시각화 예시입니다. 실내 기류 분포, 온도 편차, 환기 거동을 구역별로 확인하고 결과 후처리까지 검토할 수 있도록 구성하고 있습니다.',
+            card: '실내 기류, 온도, 습도, CO2 분포를 4-panel 예시로 검토하는 CFD 워크플로우입니다.',
+            text: '건물 HVAC 해석 결과를 10초짜리 4-panel CFD 영상으로 보여주는 예시입니다. 실내 기류, 온도, 습도, CO2 분포를 함께 확인해 공간별 편차와 환기 거동을 검토할 수 있도록 구성하고 있습니다.',
             status: '<i class="fas fa-wind"></i> 로컬 연구 도구',
             action: '<span class="software-action disabled"><i class="fas fa-desktop"></i> 로컬 예시</span>',
             play: 'CFD 영상 재생'
@@ -73,7 +73,7 @@
         if (window.SBES_CFD_BLOB_VIDEO_SRC) return Promise.resolve(window.SBES_CFD_BLOB_VIDEO_SRC);
         if (videoUrlPromise) return videoUrlPromise;
 
-        videoUrlPromise = requestText('cfd-video-patch.js?v=20260612a')
+        videoUrlPromise = requestText('cfd-video-patch.js?v=20260612d')
             .then(function (text) {
                 var parsed = extractVideoData(text);
                 var blobSrc = base64ToBlobUrl(parsed.base64);
