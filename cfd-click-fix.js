@@ -187,6 +187,8 @@
         if (!section || !video || !source || !status || !title || !text || !actions) return;
 
         ensureCfdMediaStyle();
+        section.hidden = false;
+        section.classList.add('is-visible');
         section.classList.add('sbes-cfd-active');
         section.classList.remove('sbes-cfd-video-active', 'sbes-cfd-image-active');
 
@@ -263,15 +265,14 @@
     document.addEventListener('click', (event) => {
         document.documentElement.dataset.cfdLastClick = event.target?.tagName || 'unknown';
         const cfdButton = event.target.closest('[data-tool-button="cfd"]');
-        const cfdCard = event.target.closest('[data-tool-card="cfd"]');
         const otherTool = event.target.closest('[data-tool-button], [data-tool-card]');
 
-        if (otherTool && !cfdButton && !cfdCard) {
+        if (otherTool && !cfdButton) {
             document.getElementById('tool-detail')?.classList.remove('sbes-cfd-active');
             stopCfdFrameAnimation();
         }
 
-        if (!cfdButton && !cfdCard) return;
+        if (!cfdButton) return;
         document.documentElement.dataset.cfdClickMatched = 'yes';
         if (event.target.closest('a')) return;
 
@@ -287,7 +288,8 @@
     document.querySelectorAll('[data-lang]').forEach((button) => {
         button.addEventListener('click', () => {
             scheduleStaticUpdates();
-            if (document.getElementById('tool-detail-title')?.textContent.trim() === 'CFD Simulation Workbench') {
+            const detailSection = document.getElementById('tool-detail');
+            if (!detailSection?.hidden && document.getElementById('tool-detail-title')?.textContent.trim() === 'CFD Simulation Workbench') {
                 scheduleDetailRender(false);
             }
         });
