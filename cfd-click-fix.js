@@ -37,6 +37,37 @@
         return 'videos/hvac_cfd_clean_timelapse_4panel_10s.mp4';
     }
 
+    function ensureVideoNodes() {
+        let video = document.getElementById('tool-detail-video');
+        let source = document.getElementById('tool-detail-video-source');
+        const image = document.getElementById('tool-detail-img');
+
+        if (!video && image?.parentElement) {
+            video = document.createElement('video');
+            video.id = 'tool-detail-video';
+            video.className = 'tool-detail-video';
+            video.controls = true;
+            video.muted = true;
+            video.loop = true;
+            video.playsInline = true;
+            video.preload = 'metadata';
+            video.hidden = true;
+
+            source = document.createElement('source');
+            source.id = 'tool-detail-video-source';
+            source.type = 'video/mp4';
+            video.appendChild(source);
+            image.insertAdjacentElement('afterend', video);
+        } else if (video && !source) {
+            source = document.createElement('source');
+            source.id = 'tool-detail-video-source';
+            source.type = 'video/mp4';
+            video.appendChild(source);
+        }
+
+        return { video, source };
+    }
+
     function updateCfdCardCopy() {
         const copy = COPY[currentLang()];
         const intro = document.querySelector('.software-heading p');
@@ -55,8 +86,7 @@
         const copy = COPY[currentLang()];
         const section = document.getElementById('tool-detail');
         const image = document.getElementById('tool-detail-img');
-        const video = document.getElementById('tool-detail-video');
-        const source = document.getElementById('tool-detail-video-source');
+        const { video, source } = ensureVideoNodes();
         const status = document.getElementById('tool-detail-status');
         const title = document.getElementById('tool-detail-title');
         const text = document.getElementById('tool-detail-text');
