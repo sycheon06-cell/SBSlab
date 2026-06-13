@@ -1,230 +1,139 @@
 (function () {
     'use strict';
 
-    var videoUrlPromise = null;
-    var videoBlobUrl = '';
+    document.documentElement.dataset.cfdClickFix = 'ready';
 
-    var cfdCopy = {
+    const COPY = {
         en: {
-            card: 'CFD workflow for reviewing indoor airflow, temperature, humidity, and CO2 fields in a 4-panel example.',
-            text: 'This 10-second 4-panel CFD example shows indoor airflow, temperature, humidity, and CO2 fields for building HVAC analysis. It is intended for checking spatial distribution, local deviations, and ventilation behavior from simulation outputs.',
-            status: '<i class="fas fa-wind"></i> Local Research Tool',
-            action: '<span class="software-action disabled"><i class="fas fa-desktop"></i> Local Example</span>',
-            play: 'Play CFD video'
+            intro: 'A collection of research prototypes and web tools for building simulation, CFD, membrane systems, psychrometrics, data modeling, and optimization.',
+            card: 'A CFD visualization preview for airflow, temperature, humidity, and CO2 distributions.',
+            status: '<i class="fas fa-wind"></i> Research Prototype',
+            action: '<i class="fas fa-play-circle"></i> Video Preview',
+            detailText: 'This 10-second CFD preview visualizes airflow, temperature, humidity, and CO2 distributions from a building HVAC simulation. It helps assess spatial gradients, local non-uniformity, and ventilation behavior.'
         },
         ko: {
-            card: '실내 기류, 온도, 습도, CO2 분포를 4-panel 예시로 검토하는 CFD 워크플로우입니다.',
-            text: '건물 HVAC 해석 결과를 10초짜리 4-panel CFD 영상으로 보여주는 예시입니다. 실내 기류, 온도, 습도, CO2 분포를 함께 확인해 공간별 편차와 환기 거동을 검토할 수 있도록 구성하고 있습니다.',
-            status: '<i class="fas fa-wind"></i> 로컬 연구 도구',
-            action: '<span class="software-action disabled"><i class="fas fa-desktop"></i> 로컬 예시</span>',
-            play: 'CFD 영상 재생'
+            intro: '건물 시뮬레이션, CFD, 멤브레인 시스템, 습공기 선도, 데이터 모델링, 최적화를 위한 연구용 프로토타입과 웹 도구를 소개합니다.',
+            card: '실내 기류, 온도, 습도, CO2 분포를 4분할 영상으로 보여주는 CFD 해석 예시입니다.',
+            status: '<i class="fas fa-wind"></i> 연구용 프로토타입',
+            action: '<i class="fas fa-play-circle"></i> 영상 예시',
+            detailText: '건물 HVAC 해석 결과를 10초 길이의 4분할 CFD 영상으로 시각화한 예시입니다. 실내 기류, 온도, 습도, CO2 분포를 함께 보며 공간별 분포, 국부적 불균일성, 환기 거동을 확인할 수 있습니다.'
         }
     };
 
     function currentLang() {
-        return document.documentElement.lang === 'ko' ? 'ko' : 'en';
+        const activeButton = document.querySelector('[data-lang].active');
+        return activeButton && activeButton.dataset.lang === 'ko' ? 'ko' : 'en';
     }
 
-    function requestText(url) {
-        if (window.fetch) {
-            return fetch(url, { cache: 'reload' }).then(function (response) {
-                return response.text();
-            });
+    function getVideoUrl() {
+        if (typeof window.SBES_GET_CFD_4PANEL_VIDEO_URL === 'function') {
+            return window.SBES_GET_CFD_4PANEL_VIDEO_URL();
         }
 
-        return new Promise(function (resolve, reject) {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', url, true);
-            xhr.onload = function () { resolve(xhr.responseText || ''); };
-            xhr.onerror = reject;
-            xhr.send();
-        });
-    }
-
-    function extractVideoData(text) {
-        var match = text.match(/var\s+CFD_VIDEO_SRC\s*=\s*'(data:video\/mp4;base64,([^']+))'/);
-        return {
-            dataUri: match ? match[1] : '',
-            base64: match ? match[2] : ''
-        };
-    }
-
-    function base64ToBlobUrl(base64) {
-        if (!base64 || !window.atob || !window.Blob || !window.URL || !URL.createObjectURL) return '';
-
-        var binary = window.atob(base64);
-        var chunks = [];
-        var chunkSize = 8192;
-
-        for (var offset = 0; offset < binary.length; offset += chunkSize) {
-            var slice = binary.slice(offset, offset + chunkSize);
-            var bytes = new Uint8Array(slice.length);
-            for (var i = 0; i < slice.length; i += 1) {
-                bytes[i] = slice.charCodeAt(i);
-            }
-            chunks.push(bytes);
+        if (window.SBES_CFD_VIDEO_SRC) {
+            return window.SBES_CFD_VIDEO_SRC;
         }
 
-        return URL.createObjectURL(new Blob(chunks, { type: 'video/mp4' }));
+        return 'videos/hvac_cfd_clean_timelapse_4panel_10s.mp4';
     }
 
-    function getVideoSrc() {
-        if (videoBlobUrl) return Promise.resolve(videoBlobUrl);
-        if (window.SBES_CFD_BLOB_VIDEO_SRC) return Promise.resolve(window.SBES_CFD_BLOB_VIDEO_SRC);
-        if (videoUrlPromise) return videoUrlPromise;
+    function updateCfdCardCopy() {
+        const copy = COPY[currentLang()];
+        const intro = document.querySelector('.software-heading p');
+        const card = document.querySelector('[data-tool-card="cfd"]');
+        const cardText = card && card.querySelector('.software-body p');
+        const status = card && card.querySelector('.software-status');
+        const primaryAction = card && card.querySelector('.software-action.primary');
 
-        videoUrlPromise = requestText('cfd-video-patch.js?v=20260612d')
-            .then(function (text) {
-                var parsed = extractVideoData(text);
-                var blobSrc = base64ToBlobUrl(parsed.base64);
-                window.SBES_CFD_BLOB_VIDEO_SRC = blobSrc || parsed.dataUri || '';
-                videoBlobUrl = window.SBES_CFD_BLOB_VIDEO_SRC;
-                return videoBlobUrl;
-            })
-            .catch(function () { return ''; });
-
-        return videoUrlPromise;
+        if (intro) intro.textContent = copy.intro;
+        if (cardText) cardText.textContent = copy.card;
+        if (status) status.innerHTML = copy.status;
+        if (primaryAction) primaryAction.innerHTML = copy.action;
     }
 
-    function ensureStyle() {
-        if (document.getElementById('cfd-click-fix-style')) return;
-        var style = document.createElement('style');
-        style.id = 'cfd-click-fix-style';
-        style.textContent = [
-            '.tool-detail-image{position:relative}',
-            '.tool-detail-video{width:100%;height:100%;display:block;object-fit:cover;background:#0f172a;border-radius:8px}',
-            '.tool-detail-image.has-cfd-video img{display:none}',
-            '.tool-detail-video[hidden]{display:none!important}',
-            '.cfd-play-hint{position:absolute;left:16px;bottom:16px;z-index:2;display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.58);background:rgba(15,23,42,.72);color:#fff;font-size:13px;font-weight:700;backdrop-filter:blur(6px);cursor:pointer}',
-            '.cfd-play-hint[hidden]{display:none!important}',
-            '@media (max-width:768px){.cfd-play-hint{left:12px;bottom:12px;font-size:12px;padding:8px 10px}}'
-        ].join('');
-        document.head.appendChild(style);
-    }
+    function renderCfdDetail(shouldScroll) {
+        const copy = COPY[currentLang()];
+        const section = document.getElementById('tool-detail');
+        const image = document.getElementById('tool-detail-img');
+        const video = document.getElementById('tool-detail-video');
+        const source = document.getElementById('tool-detail-video-source');
+        const status = document.getElementById('tool-detail-status');
+        const title = document.getElementById('tool-detail-title');
+        const text = document.getElementById('tool-detail-text');
+        const actions = document.getElementById('tool-detail-actions');
 
-    function updateCfdCardText() {
-        var paragraph = document.querySelector('[data-tool-card="cfd"] .software-body p');
-        if (paragraph) paragraph.textContent = cfdCopy[currentLang()].card;
-    }
+        if (!section || !video || !source || !status || !title || !text || !actions) return;
 
-    function ensurePlayHint(media, video) {
-        var hint = document.getElementById('cfd-play-hint');
-        if (!hint) {
-            hint = document.createElement('button');
-            hint.id = 'cfd-play-hint';
-            hint.type = 'button';
-            hint.className = 'cfd-play-hint';
-            media.appendChild(hint);
-            hint.addEventListener('click', function (event) {
-                event.preventDefault();
-                event.stopPropagation();
-                video.play().then(function () {
-                    hint.hidden = true;
-                }).catch(function () {
-                    hint.hidden = false;
-                });
-            });
-        }
-        hint.innerHTML = '<i class="fas fa-play"></i><span>' + cfdCopy[currentLang()].play + '</span>';
-        return hint;
-    }
+        const videoUrl = getVideoUrl();
+        if (image) image.hidden = true;
 
-    function ensureVideoElement(src) {
-        var media = document.querySelector('#tool-detail .tool-detail-image');
-        if (!media || !src) return null;
-
-        var video = document.getElementById('tool-detail-video');
-        if (!video) {
-            video = document.createElement('video');
-            video.id = 'tool-detail-video';
-            video.className = 'tool-detail-video';
-            media.appendChild(video);
-        }
-
+        video.hidden = false;
         video.controls = true;
         video.muted = true;
         video.loop = true;
-        video.autoplay = true;
         video.playsInline = true;
-        video.setAttribute('playsinline', '');
-        video.setAttribute('webkit-playsinline', '');
-        video.preload = 'auto';
         video.poster = 'images/software/cfd-workbench.png';
 
-        if (video.src !== src) {
-            video.src = src;
+        if (source.getAttribute('src') !== videoUrl) {
+            source.setAttribute('src', videoUrl);
             video.load();
         }
 
-        return video;
+        status.className = 'software-status research';
+        status.innerHTML = copy.status;
+        title.textContent = 'CFD Simulation Workbench';
+        text.textContent = copy.detailText;
+        actions.innerHTML = `<span class="software-action primary">${copy.action}</span>`;
+
+        video.play().catch(() => {});
+
+        if (shouldScroll) {
+            section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
     }
 
-    function renderCfdDetail() {
-        ensureStyle();
-        updateCfdCardText();
-
-        return getVideoSrc().then(function (src) {
-            var langCopy = cfdCopy[currentLang()];
-            var media = document.querySelector('#tool-detail .tool-detail-image');
-            var img = document.getElementById('tool-detail-img');
-            var title = document.getElementById('tool-detail-title');
-            var text = document.getElementById('tool-detail-text');
-            var status = document.getElementById('tool-detail-status');
-            var actions = document.getElementById('tool-detail-actions');
-            var detail = document.getElementById('tool-detail');
-            var video = ensureVideoElement(src);
-
-            if (title) title.textContent = 'CFD Simulation Workbench';
-            if (text) text.textContent = langCopy.text;
-            if (status) {
-                status.className = 'software-status research';
-                status.innerHTML = langCopy.status;
-            }
-            if (actions) actions.innerHTML = langCopy.action;
-            if (img) img.hidden = true;
-            if (media) media.classList.add('has-cfd-video');
-
-            if (video && media) {
-                var hint = ensurePlayHint(media, video);
-                video.hidden = false;
-                hint.hidden = true;
-
-                video.play().then(function () {
-                    hint.hidden = true;
-                }).catch(function () {
-                    hint.hidden = false;
-                });
-            }
-
-            if (detail && !detail.dataset.cfdScrolled) {
-                detail.dataset.cfdScrolled = 'true';
-                detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                window.setTimeout(function () { delete detail.dataset.cfdScrolled; }, 1200);
-            }
+    function scheduleStaticUpdates() {
+        [0, 40, 160, 500].forEach((delay) => {
+            window.setTimeout(updateCfdCardCopy, delay);
         });
     }
 
-    function scheduleCfdRender() {
-        [0, 100, 350, 850, 1600].forEach(function (delay) {
-            window.setTimeout(renderCfdDetail, delay);
+    function scheduleDetailRender(shouldScroll) {
+        [0, 40, 160, 500].forEach((delay) => {
+            window.setTimeout(() => renderCfdDetail(shouldScroll), delay);
         });
     }
 
-    document.addEventListener('click', function (event) {
-        var cfdTarget = event.target.closest('[data-tool-button="cfd"], [data-tool-card="cfd"]');
-        if (!cfdTarget) return;
-        scheduleCfdRender();
+    document.addEventListener('click', (event) => {
+        document.documentElement.dataset.cfdLastClick = event.target?.tagName || 'unknown';
+        const cfdButton = event.target.closest('[data-tool-button="cfd"]');
+        const cfdCard = event.target.closest('[data-tool-card="cfd"]');
+
+        if (!cfdButton && !cfdCard) return;
+        document.documentElement.dataset.cfdClickMatched = 'yes';
+        if (event.target.closest('a')) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+        if (event.stopImmediatePropagation) event.stopImmediatePropagation();
+
+        updateCfdCardCopy();
+        renderCfdDetail(true);
+        scheduleDetailRender(true);
     }, true);
 
-    document.addEventListener('keydown', function (event) {
-        if (event.key !== 'Enter' && event.key !== ' ') return;
-        var cfdTarget = event.target.closest('[data-tool-button="cfd"], [data-tool-card="cfd"]');
-        if (!cfdTarget) return;
-        scheduleCfdRender();
-    }, true);
+    document.querySelectorAll('[data-lang]').forEach((button) => {
+        button.addEventListener('click', () => {
+            scheduleStaticUpdates();
+            if (document.getElementById('tool-detail-title')?.textContent.trim() === 'CFD Simulation Workbench') {
+                scheduleDetailRender(false);
+            }
+        });
+    });
 
-    document.addEventListener('DOMContentLoaded', updateCfdCardText);
-    updateCfdCardText();
-
-    window.SBES_RENDER_CFD_DETAIL = renderCfdDetail;
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', scheduleStaticUpdates);
+    } else {
+        scheduleStaticUpdates();
+    }
 })();
