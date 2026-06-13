@@ -37,8 +37,9 @@
         const style = document.createElement('style');
         style.id = 'sbes-cfd-detail-style';
         style.textContent = [
-            '#tool-detail.sbes-cfd-video-active #tool-detail-img { display: none !important; }',
-            '#tool-detail.sbes-cfd-video-active #tool-detail-video { display: block !important; width: 100%; max-width: 100%; aspect-ratio: 16 / 9; object-fit: contain; border-radius: 8px; }',
+            '#tool-detail.sbes-cfd-video-active .tool-detail-image { position: relative; aspect-ratio: 16 / 9; }',
+            '#tool-detail.sbes-cfd-video-active #tool-detail-img { display: block !important; opacity: 1 !important; width: 100%; max-width: 100%; aspect-ratio: 16 / 9; object-fit: contain; border-radius: 8px; }',
+            '#tool-detail.sbes-cfd-video-active #tool-detail-video { display: block !important; position: absolute; inset: 0; width: 100%; height: 100%; max-width: 100%; aspect-ratio: 16 / 9; object-fit: contain; border-radius: 8px; background: #fff; }',
             '#tool-detail.sbes-cfd-image-active #tool-detail-img { display: block !important; opacity: 1 !important; width: 100%; max-width: 100%; aspect-ratio: 16 / 9; object-fit: contain; border-radius: 8px; }',
             '#tool-detail.sbes-cfd-image-active #tool-detail-video { display: none !important; }'
         ].join('\n');
@@ -215,15 +216,18 @@
             section.classList.add('sbes-cfd-video-active');
             const videoUrl = getVideoUrl();
             ({ video, source } = replaceCfdVideoNode(video, source, videoUrl));
-            if (image) image.hidden = true;
+            if (image) {
+                image.hidden = false;
+                image.src = window.SBES_CFD_POSTER_SRC || 'images/software/cfd-workbench.png';
+                image.alt = 'CFD preview poster showing airflow, temperature, CO2, and humidity fields';
+            }
 
             video.hidden = false;
             video.controls = true;
             video.muted = true;
             video.loop = true;
             video.playsInline = true;
-            video.removeAttribute('poster');
-            video.poster = '';
+            video.poster = window.SBES_CFD_POSTER_SRC || '';
 
             if (source.getAttribute('src') !== videoUrl) {
                 source.setAttribute('src', videoUrl);
