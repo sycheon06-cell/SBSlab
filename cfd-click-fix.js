@@ -2,6 +2,34 @@
     'use strict';
 
     document.documentElement.dataset.cfdClickFix = 'ready';
+    let cfdFrameTimer = null;
+
+    function stopCfdFrameAnimation() {
+        if (!cfdFrameTimer) return;
+        window.clearInterval(cfdFrameTimer);
+        cfdFrameTimer = null;
+    }
+
+    function startCfdFrameAnimation(image) {
+        const frames = window.SBES_CFD_PREVIEW_FRAMES;
+        if (!Array.isArray(frames) || frames.length === 0 || !image) return false;
+
+        stopCfdFrameAnimation();
+        let frameIndex = 0;
+        image.src = frames[frameIndex];
+        cfdFrameTimer = window.setInterval(() => {
+            const section = document.getElementById('tool-detail');
+            if (!section?.classList.contains('sbes-cfd-active')) {
+                stopCfdFrameAnimation();
+                return;
+            }
+
+            frameIndex = (frameIndex + 1) % frames.length;
+            image.src = frames[frameIndex];
+        }, 500);
+
+        return true;
+    }
 
     function ensureCfdMediaStyle() {
         if (document.getElementById('sbes-cfd-detail-style')) return;
@@ -9,8 +37,10 @@
         const style = document.createElement('style');
         style.id = 'sbes-cfd-detail-style';
         style.textContent = [
-            '#tool-detail.sbes-cfd-active #tool-detail-img { display: none !important; }',
-            '#tool-detail.sbes-cfd-active #tool-detail-video { display: block !important; width: 100%; max-width: 100%; aspect-ratio: 16 / 9; object-fit: contain; border-radius: 8px; }'
+            '#tool-detail.sbes-cfd-video-active #tool-detail-img { display: none !important; }',
+            '#tool-detail.sbes-cfd-video-active #tool-detail-video { display: block !important; width: 100%; max-width: 100%; aspect-ratio: 16 / 9; object-fit: contain; border-radius: 8px; }',
+            '#tool-detail.sbes-cfd-image-active #tool-detail-img { display: block !important; opacity: 1 !important; width: 100%; max-width: 100%; aspect-ratio: 16 / 9; object-fit: contain; border-radius: 8px; }',
+            '#tool-detail.sbes-cfd-image-active #tool-detail-video { display: none !important; }'
         ].join('\n');
         document.head.appendChild(style);
     }
@@ -38,6 +68,12 @@
     }
 
     function getVideoUrl() {
+        const directVideo = 'videos/hvac_cfd_clean_timelapse_4panel_10s_embed_480.mp4?v=20260613a';
+
+        if (!window.SBES_DISABLE_DIRECT_CFD_VIDEO) {
+            return directVideo;
+        }
+
         if (typeof window.SBES_GET_CFD_4PANEL_VIDEO_URL === 'function') {
             return window.SBES_GET_CFD_4PANEL_VIDEO_URL();
         }
@@ -59,7 +95,7 @@
             return window.SBES_CFD_VIDEO_SRC;
         }
 
-        return 'videos/hvac_cfd_clean_timelapse_4panel_10s.mp4';
+        return directVideo;
     }
 
     function ensureVideoNodes() {
@@ -121,20 +157,49 @@
 
         ensureCfdMediaStyle();
         section.classList.add('sbes-cfd-active');
-        const videoUrl = getVideoUrl();
-        if (image) image.hidden = true;
+        section.classList.remove('sbes-cfd-video-active', 'sbes-cfd-image-active');
 
-        video.hidden = false;
-        video.controls = true;
-        video.muted = true;
-        video.loop = true;
-        video.playsInline = true;
-        video.removeAttribute('poster');
-        video.poster = '';
+        if (Array.isArray(window.SBES_CFD_PREVIEW_FRAMES) && image) {
+            section.classList.add('sbes-cfd-image-active');
+            image.alt = 'Animated CFD preview showing airflow, temperature, CO2, and humidity fields';
+            image.hidden = false;
+            startCfdFrameAnimation(image);
 
-        if (source.getAttribute('src') !== videoUrl) {
-            source.setAttribute('src', videoUrl);
+            video.pause();
+            video.hidden = true;
+            source.removeAttribute('src');
+            video.removeAttribute('src');
             video.load();
+        } else if (window.SBES_CFD_ANIMATED_PREVIEW_SRC && image) {
+            section.classList.add('sbes-cfd-image-active');
+            image.src = window.SBES_CFD_ANIMATED_PREVIEW_SRC;
+            image.alt = 'Animated CFD preview showing airflow, temperature, CO2, and humidity fields';
+            image.hidden = false;
+
+            video.pause();
+            video.hidden = true;
+            source.removeAttribute('src');
+            video.removeAttribute('src');
+            video.load();
+        } else {
+            section.classList.add('sbes-cfd-video-active');
+            const videoUrl = getVideoUrl();
+            if (image) image.hidden = true;
+
+            video.hidden = false;
+            video.controls = true;
+            video.muted = true;
+            video.loop = true;
+            video.playsInline = true;
+            video.removeAttribute('poster');
+            video.poster = '';
+
+            if (source.getAttribute('src') !== videoUrl) {
+                source.setAttribute('src', videoUrl);
+                video.load();
+            }
+
+            video.play().catch(() => {});
         }
 
         status.className = 'software-status research';
@@ -142,8 +207,6 @@
         title.textContent = 'CFD Simulation Workbench';
         text.textContent = copy.detailText;
         actions.innerHTML = `<span class="software-action primary">${copy.action}</span>`;
-
-        video.play().catch(() => {});
 
         if (shouldScroll) {
             section.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -170,6 +233,7 @@
 
         if (otherTool && !cfdButton && !cfdCard) {
             document.getElementById('tool-detail')?.classList.remove('sbes-cfd-active');
+            stopCfdFrameAnimation();
         }
 
         if (!cfdButton && !cfdCard) return;
