@@ -43,6 +43,19 @@
         }
 
         if (window.SBES_CFD_VIDEO_SRC) {
+            if (window.SBES_CFD_VIDEO_SRC.startsWith('data:video/mp4;base64,')) {
+                if (window.SBES_CFD_VIDEO_BLOB_URL) return window.SBES_CFD_VIDEO_BLOB_URL;
+
+                const encoded = window.SBES_CFD_VIDEO_SRC.split(',')[1];
+                const binary = atob(encoded);
+                const bytes = new Uint8Array(binary.length);
+                for (let index = 0; index < binary.length; index += 1) {
+                    bytes[index] = binary.charCodeAt(index);
+                }
+                window.SBES_CFD_VIDEO_BLOB_URL = URL.createObjectURL(new Blob([bytes], { type: 'video/mp4' }));
+                return window.SBES_CFD_VIDEO_BLOB_URL;
+            }
+
             return window.SBES_CFD_VIDEO_SRC;
         }
 
@@ -116,7 +129,8 @@
         video.muted = true;
         video.loop = true;
         video.playsInline = true;
-        video.poster = 'images/software/cfd-workbench.png';
+        video.removeAttribute('poster');
+        video.poster = '';
 
         if (source.getAttribute('src') !== videoUrl) {
             source.setAttribute('src', videoUrl);
