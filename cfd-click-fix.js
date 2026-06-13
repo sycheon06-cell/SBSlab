@@ -3,6 +3,18 @@
 
     document.documentElement.dataset.cfdClickFix = 'ready';
 
+    function ensureCfdMediaStyle() {
+        if (document.getElementById('sbes-cfd-detail-style')) return;
+
+        const style = document.createElement('style');
+        style.id = 'sbes-cfd-detail-style';
+        style.textContent = [
+            '#tool-detail.sbes-cfd-active #tool-detail-img { display: none !important; }',
+            '#tool-detail.sbes-cfd-active #tool-detail-video { display: block !important; width: 100%; max-width: 100%; aspect-ratio: 16 / 9; object-fit: contain; border-radius: 8px; }'
+        ].join('\n');
+        document.head.appendChild(style);
+    }
+
     const COPY = {
         en: {
             intro: 'A collection of research prototypes and web tools for building simulation, CFD, membrane systems, psychrometrics, data modeling, and optimization.',
@@ -94,6 +106,8 @@
 
         if (!section || !video || !source || !status || !title || !text || !actions) return;
 
+        ensureCfdMediaStyle();
+        section.classList.add('sbes-cfd-active');
         const videoUrl = getVideoUrl();
         if (image) image.hidden = true;
 
@@ -138,6 +152,11 @@
         document.documentElement.dataset.cfdLastClick = event.target?.tagName || 'unknown';
         const cfdButton = event.target.closest('[data-tool-button="cfd"]');
         const cfdCard = event.target.closest('[data-tool-card="cfd"]');
+        const otherTool = event.target.closest('[data-tool-button], [data-tool-card]');
+
+        if (otherTool && !cfdButton && !cfdCard) {
+            document.getElementById('tool-detail')?.classList.remove('sbes-cfd-active');
+        }
 
         if (!cfdButton && !cfdCard) return;
         document.documentElement.dataset.cfdClickMatched = 'yes';
