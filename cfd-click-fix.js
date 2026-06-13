@@ -70,14 +70,6 @@
     function getVideoUrl() {
         const directVideo = 'videos/hvac_cfd_clean_timelapse_4panel_10s_embed_480.mp4?v=20260613a';
 
-        if (!window.SBES_DISABLE_DIRECT_CFD_VIDEO) {
-            return directVideo;
-        }
-
-        if (typeof window.SBES_GET_CFD_4PANEL_VIDEO_URL === 'function') {
-            return window.SBES_GET_CFD_4PANEL_VIDEO_URL();
-        }
-
         if (window.SBES_CFD_VIDEO_SRC) {
             if (window.SBES_CFD_VIDEO_SRC.startsWith('data:video/mp4;base64,')) {
                 if (window.SBES_CFD_VIDEO_BLOB_URL) return window.SBES_CFD_VIDEO_BLOB_URL;
@@ -95,7 +87,45 @@
             return window.SBES_CFD_VIDEO_SRC;
         }
 
+        if (typeof window.SBES_GET_CFD_4PANEL_VIDEO_URL === 'function') {
+            return window.SBES_GET_CFD_4PANEL_VIDEO_URL();
+        }
+
+        if (!window.SBES_DISABLE_DIRECT_CFD_VIDEO) {
+            return directVideo;
+        }
+
         return directVideo;
+    }
+
+    function replaceCfdVideoNode(video, source, videoUrl) {
+        if (!video || !source) return { video, source };
+
+        const currentKey = video.dataset.sbesCfdVideoKey;
+        const nextKey = `${videoUrl.length}:${videoUrl.slice(0, 24)}:${videoUrl.slice(-24)}`;
+        if (currentKey === nextKey && source.getAttribute('src') === videoUrl) {
+            return { video, source };
+        }
+
+        const freshVideo = document.createElement('video');
+        freshVideo.id = 'tool-detail-video';
+        freshVideo.className = 'tool-detail-video';
+        freshVideo.controls = true;
+        freshVideo.muted = true;
+        freshVideo.loop = true;
+        freshVideo.playsInline = true;
+        freshVideo.preload = 'auto';
+        freshVideo.hidden = true;
+        freshVideo.dataset.sbesCfdVideoKey = nextKey;
+
+        const freshSource = document.createElement('source');
+        freshSource.id = 'tool-detail-video-source';
+        freshSource.type = 'video/mp4';
+        freshSource.setAttribute('src', videoUrl);
+        freshVideo.appendChild(freshSource);
+
+        video.replaceWith(freshVideo);
+        return { video: freshVideo, source: freshSource };
     }
 
     function ensureVideoNodes() {
@@ -147,7 +177,7 @@
         const copy = COPY[currentLang()];
         const section = document.getElementById('tool-detail');
         const image = document.getElementById('tool-detail-img');
-        const { video, source } = ensureVideoNodes();
+        let { video, source } = ensureVideoNodes();
         const status = document.getElementById('tool-detail-status');
         const title = document.getElementById('tool-detail-title');
         const text = document.getElementById('tool-detail-text');
@@ -184,6 +214,7 @@
         } else {
             section.classList.add('sbes-cfd-video-active');
             const videoUrl = getVideoUrl();
+            ({ video, source } = replaceCfdVideoNode(video, source, videoUrl));
             if (image) image.hidden = true;
 
             video.hidden = false;
