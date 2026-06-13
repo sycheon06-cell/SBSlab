@@ -179,6 +179,10 @@
     scroll-margin-top: 96px;
 }
 
+.tool-detail[hidden] {
+    display: none !important;
+}
+
 .tool-detail-image {
     overflow: hidden;
     border: 1px solid #dbe3ee;
@@ -192,6 +196,19 @@
     height: 100%;
     display: block;
     object-fit: cover;
+}
+
+.tool-detail-video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    background: #0f172a;
+}
+
+.tool-detail-video[hidden],
+.tool-detail-image img[hidden] {
+    display: none;
 }
 
 .tool-detail-copy {
