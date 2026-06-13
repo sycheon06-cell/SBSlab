@@ -554,13 +554,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!detail || !detailSection || !detailImg || !detailStatus || !detailTitle || !detailText || !detailActions) return;
 
         activeToolKey = key;
+        document.documentElement.dataset.sbesActiveTool = key;
         detailSection.hidden = false;
         detailSection.classList.add('is-visible');
+        detailSection.classList.remove('sbes-cfd-active', 'sbes-cfd-video-active', 'sbes-cfd-image-active');
         const resolvedVideo = detail.videoResolver && typeof window[detail.videoResolver] === 'function'
             ? window[detail.videoResolver]()
             : detail.video;
 
-        if (resolvedVideo && detailVideo && detailVideoSource) {
+        if (key === 'cfd' && resolvedVideo && detailVideo && detailVideoSource) {
             detailImg.hidden = true;
             detailVideo.hidden = false;
             detailVideo.poster = detail.poster || detail.image;
@@ -570,12 +572,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             detailVideo.play().catch(() => {});
         } else {
+            if (detailVideoSource) {
+                detailVideoSource.removeAttribute('src');
+            }
             if (detailVideo) {
                 detailVideo.pause();
                 detailVideo.hidden = true;
-            }
-            if (detailVideoSource) {
-                detailVideoSource.setAttribute('src', '');
+                detailVideo.removeAttribute('src');
+                detailVideo.load();
             }
             detailImg.hidden = false;
             detailImg.src = detail.image;
