@@ -3,6 +3,7 @@
 
     document.documentElement.dataset.cfdClickFix = 'ready';
     let cfdFrameTimer = null;
+    let cfdRenderToken = 0;
 
     function stopCfdFrameAnimation() {
         if (!cfdFrameTimer) return;
@@ -44,6 +45,26 @@
             '#tool-detail.sbes-cfd-image-active #tool-detail-video { display: none !important; }'
         ].join('\n');
         document.head.appendChild(style);
+    }
+
+    function resetCfdDetailState() {
+        const section = document.getElementById('tool-detail');
+        const video = document.getElementById('tool-detail-video');
+        const source = document.getElementById('tool-detail-video-source');
+
+        section?.classList.remove('sbes-cfd-active', 'sbes-cfd-video-active', 'sbes-cfd-image-active');
+        stopCfdFrameAnimation();
+
+        if (source) {
+            source.removeAttribute('src');
+        }
+
+        if (video) {
+            video.pause();
+            video.hidden = true;
+            video.removeAttribute('src');
+            video.load();
+        }
     }
 
     const COPY = {
@@ -187,6 +208,7 @@
         if (!section || !video || !source || !status || !title || !text || !actions) return;
 
         ensureCfdMediaStyle();
+        document.documentElement.dataset.sbesActiveTool = 'cfd';
         section.hidden = false;
         section.classList.add('is-visible');
         section.classList.add('sbes-cfd-active');
@@ -257,19 +279,25 @@
     }
 
     function scheduleDetailRender(shouldScroll) {
+        const token = cfdRenderToken;
         [0, 40, 160, 500].forEach((delay) => {
-            window.setTimeout(() => renderCfdDetail(shouldScroll), delay);
+            window.setTimeout(() => {
+                if (token === cfdRenderToken && document.documentElement.dataset.sbesActiveTool === 'cfd') {
+                    renderCfdDetail(shouldScroll);
+                }
+            }, delay);
         });
     }
 
     document.addEventListener('click', (event) => {
         document.documentElement.dataset.cfdLastClick = event.target?.tagName || 'unknown';
         const cfdButton = event.target.closest('[data-tool-button="cfd"]');
-        const otherTool = event.target.closest('[data-tool-button], [data-tool-card]');
+        const otherToolButton = event.target.closest('[data-tool-button]');
 
-        if (otherTool && !cfdButton) {
-            document.getElementById('tool-detail')?.classList.remove('sbes-cfd-active');
-            stopCfdFrameAnimation();
+        if (otherToolButton && !cfdButton) {
+            cfdRenderToken += 1;
+            document.documentElement.dataset.sbesActiveTool = otherToolButton.dataset.toolButton || '';
+            resetCfdDetailState();
         }
 
         if (!cfdButton) return;
@@ -280,9 +308,11 @@
         event.stopPropagation();
         if (event.stopImmediatePropagation) event.stopImmediatePropagation();
 
+        cfdRenderToken += 1;
+        document.documentElement.dataset.sbesActiveTool = 'cfd';
         updateCfdCardCopy();
         renderCfdDetail(true);
-        scheduleDetailRender(true);
+        scheduleDetailRender(false);
     }, true);
 
     document.querySelectorAll('[data-lang]').forEach((button) => {
