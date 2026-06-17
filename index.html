@@ -33,11 +33,12 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-<link href="style.css" rel="stylesheet"/>
+<link href="style.css?v=20260617e" rel="stylesheet"/>
 <link href="brand.css" rel="stylesheet"/>
 <link href="researcher.css" rel="stylesheet"/>
-<link href="software.css?v=20260613a" rel="stylesheet"/>
-<link href="usability.css?v=20260609c" rel="stylesheet"/>
+<link href="software.css?v=20260617c" rel="stylesheet"/>
+<link href="usability.css?v=20260617c" rel="stylesheet"/>
+<link href="about-platform.css?v=20260617c" rel="stylesheet"/>
 </head>
 <body>
 <!-- Navigation -->
@@ -89,15 +90,52 @@
 <section class="section" id="about">
 <div class="container">
 <h2 class="section-title">About the Lab</h2>
-<div class="about-grid">
+<div class="about-grid about-platform-intro">
 <div class="about-text">
 <p>We address emerging global challenges at the intersection of energy consumption, humidity
                         control, and indoor air quality. Our lab develops non-refrigerant HVAC technologies,
                         high-efficiency membrane systems, and climate-adaptive building strategies that reduce energy
                         demand and enhance environmental health. Through system-level innovation, we aim to contribute
                         to the transition toward sustainable, low-carbon built environments.</p>
+<button class="btn btn-primary about-platform-action" id="lab-platform-toggle" type="button" aria-expanded="false" aria-controls="lab-platform-vision">Show More Lab</button>
 </div>
 </div>
+<section class="lab-platform" id="lab-platform-vision" data-active="" hidden>
+<div class="lab-platform-header">
+<span class="lab-platform-kicker" data-lab-platform-copy="kicker"><i class="fas fa-diagram-project"></i> Energy &middot; Humidity &middot; Indoor Air Quality</span>
+<h3 data-lab-platform-copy="platformTitle">Research Vision</h3>
+<p class="lab-platform-vision" data-lab-platform-copy="platformVision">SBES Lab connects selective HVAC components, integrated energy systems, building-scale performance evaluation, and data-driven operation into one research platform.</p>
+</div>
+<div class="lab-platform-image-shell">
+<div class="lab-platform-image-wrap">
+<img class="lab-platform-image" src="images/about-platform-base-pieces.png?v=20260617-pieces" alt="SBES Lab integrated research platform diagram"/>
+<button class="lab-platform-piece lab-platform-piece-develop" data-module="develop" type="button" aria-pressed="false" aria-label="Develop">
+<img src="images/about-platform-piece-develop.png?v=20260617-pieces" alt="Selective HVAC Component Technologies"/>
+</button>
+<button class="lab-platform-piece lab-platform-piece-integrate" data-module="integrate" type="button" aria-pressed="false" aria-label="Integrate">
+<img src="images/about-platform-piece-integrate.png?v=20260617-pieces" alt="Integrated HVAC and Energy Systems"/>
+</button>
+<button class="lab-platform-piece lab-platform-piece-evaluate" data-module="evaluate" type="button" aria-pressed="false" aria-label="Evaluate">
+<img src="images/about-platform-piece-evaluate.png?v=20260617-pieces" alt="Building-Scale Performance Evaluation"/>
+</button>
+<button class="lab-platform-piece lab-platform-piece-operate" data-module="operate" type="button" aria-pressed="false" aria-label="Operate">
+<img src="images/about-platform-piece-operate.png?v=20260617-pieces" alt="Control-Oriented Operation and Automation"/>
+</button>
+</div>
+</div>
+<div class="lab-platform-mobile-list" id="lab-platform-mobile-list"></div>
+<div class="lab-platform-detail" id="lab-platform-detail" aria-live="polite" hidden>
+<div>
+<span class="lab-platform-detail-label" id="lab-platform-detail-step"></span>
+<h4 id="lab-platform-detail-title"></h4>
+<p id="lab-platform-detail-text"></p>
+</div>
+<div class="lab-platform-detail-side">
+<p class="lab-platform-takeaway" id="lab-platform-detail-next"></p>
+<span class="lab-platform-tool" id="lab-platform-detail-tool"></span>
+</div>
+</div>
+</section>
 </div>
 </section>
 <!-- Research Areas -->
@@ -312,7 +350,7 @@
 <div class="software-grid">
 <article class="software-card" data-tool-card="building">
 <div class="software-thumb">
-<img alt="Building simulation dashboard thumbnail" src="images/software/building-simulation.png"/>
+<img alt="Building simulation dashboard thumbnail" src="images/software/building-simulation.jpg"/>
 <span class="software-status beta"><i class="fas fa-flask"></i> Beta Web App</span>
 </div>
 <div class="software-body">
@@ -331,7 +369,7 @@
 
 <article class="software-card" data-tool-card="cfd">
 <div class="software-thumb">
-<img alt="CFD airflow visualization thumbnail" src="images/software/cfd-workbench.png"/>
+<img alt="CFD airflow visualization thumbnail" src="images/software/cfd-workbench.jpg"/>
                         <span class="software-status research"><i class="fas fa-wind"></i> Research Prototype</span>
 </div>
 <div class="software-body">
@@ -350,7 +388,7 @@
 
 <article class="software-card" data-tool-card="membrane">
 <div class="software-thumb">
-<img alt="Web membrane humidifier configurator thumbnail" src="images/software/membrane-designer.png"/>
+<img alt="Web membrane humidifier configurator thumbnail" src="images/software/membrane-designer.jpg"/>
 <span class="software-status"><i class="fas fa-droplet"></i> Live Web App</span>
 </div>
 <div class="software-body">
@@ -407,7 +445,7 @@
 
 <article class="software-card" data-tool-card="optimization">
 <div class="software-thumb">
-<img alt="Optimization surface thumbnail" src="images/software/optimization-studio.png"/>
+<img alt="Optimization surface thumbnail" src="images/software/optimization-studio.jpg"/>
 <span class="software-status beta"><i class="fas fa-flask"></i> Beta Web App</span>
 </div>
 <div class="software-body">
@@ -427,7 +465,7 @@
 
 <section class="tool-detail" id="tool-detail" aria-live="polite" hidden>
 <div class="tool-detail-image">
-<img alt="Selected software tool preview" id="tool-detail-img" src="images/software/membrane-designer.png"/>
+<img alt="Selected software tool preview" id="tool-detail-img" src="images/software/membrane-designer.jpg"/>
 <video id="tool-detail-video" class="tool-detail-video" controls muted loop playsinline preload="metadata" hidden>
 <source id="tool-detail-video-source" src="" type="video/mp4"/>
 </video>
@@ -481,6 +519,6 @@
 <p>&copy; 2024 SBES Lab. All rights reserved.</p>
 </div>
 </footer>
-<script src="cfd-video-patch.js?v=20260613o"></script><script src="script.js?v=20260613d"></script><script src="i18n.js?v=20260612d"></script><script src="cfd-click-fix.js?v=20260613l"></script><script src="publications.js?v=20260609c"></script><script src="software-beta-links.js?v=20260611a"></script>
+<script src="cfd-video-patch.js?v=20260613o"></script><script src="script.js?v=20260617g"></script><script src="i18n.js?v=20260617c"></script><script src="cfd-click-fix.js?v=20260617c"></script><script src="publications.js?v=20260609c"></script><script src="software-beta-links.js?v=20260617c"></script><script src="about-platform.js?v=20260617d"></script>
 </body>
 </html>

@@ -233,6 +233,15 @@
     margin-bottom: 20px;
 }
 
+html[lang="ko"] .software-heading p,
+html[lang="ko"] .software-body h3,
+html[lang="ko"] .software-body p,
+html[lang="ko"] .tool-detail-copy h3,
+html[lang="ko"] .tool-detail-copy p {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
 @media (max-width: 1100px) {
     .software-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -1,0 +1,321 @@
+.about-platform-intro {
+    max-width: 880px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-platform-intro .about-text p {
+    margin: 0 auto 26px;
+    max-width: 820px;
+    color: #526986;
+    font-size: 1.04rem;
+    line-height: 1.8;
+}
+
+.about-platform-action {
+    border-radius: 999px;
+}
+
+.lab-platform {
+    margin-top: 40px;
+    scroll-margin-top: 116px;
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 18px 48px rgba(11, 21, 51, 0.08);
+    overflow: hidden;
+}
+
+.lab-platform[hidden] {
+    display: none;
+}
+
+.lab-platform-header {
+    padding: 34px 38px 20px;
+    text-align: center;
+}
+
+.lab-platform-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #14a6a3;
+    font-size: 0.84rem;
+    font-weight: 900;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.lab-platform-header h3 {
+    margin: 12px auto 10px;
+    max-width: 900px;
+    color: #0b1533;
+    font-size: clamp(1.75rem, 3vw, 2.45rem);
+    line-height: 1.2;
+}
+
+.lab-platform-vision {
+    margin: 0 auto;
+    max-width: 820px;
+    color: #526986;
+    line-height: 1.7;
+}
+
+.lab-platform-image-shell {
+    position: relative;
+    margin: 0 30px 24px;
+    border: 1px solid rgba(31, 95, 174, 0.12);
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+    overflow: hidden;
+}
+
+.lab-platform-image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1955 / 795;
+    min-height: 430px;
+}
+
+.lab-platform-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #ffffff;
+}
+
+.lab-platform-piece {
+    --hotspot-color: #1f5fae;
+    position: absolute;
+    display: block;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    transform: scale(1);
+    transform-origin: center;
+    box-shadow: none;
+    filter: none;
+    cursor: pointer;
+    z-index: 2;
+    transition:
+        transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        filter 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lab-platform-piece img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.lab-platform-piece-develop {
+    --hotspot-color: #2e7d32;
+    left: 1.02%;
+    top: 14.59%;
+    width: 42.71%;
+    height: 39.87%;
+}
+
+.lab-platform-piece-integrate {
+    --hotspot-color: #e65a1e;
+    left: 55.35%;
+    top: 14.59%;
+    width: 43.53%;
+    height: 39.87%;
+}
+
+.lab-platform-piece-evaluate {
+    --hotspot-color: #1f5fae;
+    left: 1.02%;
+    top: 56.60%;
+    width: 42.76%;
+    height: 41.51%;
+}
+
+.lab-platform-piece-operate {
+    --hotspot-color: #14a6a3;
+    left: 55.24%;
+    top: 56.60%;
+    width: 43.79%;
+    height: 39.87%;
+}
+
+.lab-platform-piece:hover,
+.lab-platform-piece:focus-visible,
+.lab-platform-piece.is-hovered {
+    transform: scale(1.04);
+    filter: drop-shadow(0 16px 28px rgba(11, 21, 51, 0.16));
+    z-index: 4;
+}
+
+.lab-platform.is-click-settling .lab-platform-piece {
+    transform: scale(1);
+    filter: none;
+}
+
+.lab-platform-piece:focus-visible {
+    outline: 3px solid var(--hotspot-color);
+    outline-offset: -6px;
+}
+
+.lab-platform-mobile-list {
+    display: none;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 0 22px 22px;
+}
+
+.lab-platform-mobile-button {
+    border: 1px solid rgba(31, 95, 174, 0.14);
+    border-left: 4px solid var(--module-color);
+    border-radius: 13px;
+    background: #ffffff;
+    padding: 16px;
+    text-align: left;
+    box-shadow: 0 8px 18px rgba(11, 21, 51, 0.06);
+    cursor: pointer;
+}
+
+.lab-platform-mobile-button strong {
+    display: block;
+    color: #0b1533;
+    font-size: 1rem;
+}
+
+.lab-platform-mobile-button span {
+    display: block;
+    margin-top: 5px;
+    color: #526986;
+    line-height: 1.5;
+}
+
+.lab-platform-detail {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 24px;
+    margin: 0 30px 30px;
+    padding: 24px;
+    border: 1px solid rgba(31, 95, 174, 0.12);
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 12px 30px rgba(11, 21, 51, 0.06);
+    scroll-margin-top: 120px;
+}
+
+.lab-platform-detail[hidden] {
+    display: none;
+}
+
+.lab-platform-detail-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #1f5fae;
+    font-weight: 900;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.lab-platform-detail h4 {
+    margin: 9px 0 8px;
+    color: #0b1533;
+    font-size: 1.32rem;
+    line-height: 1.35;
+}
+
+.lab-platform-detail p {
+    margin: 0;
+    color: #526986;
+    line-height: 1.7;
+}
+
+.lab-platform-detail-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+}
+
+.lab-platform-takeaway {
+    margin: 0;
+    padding: 14px 16px;
+    border-radius: 13px;
+    background: #f8fafc;
+    color: #315f93;
+    font-weight: 800;
+    line-height: 1.55;
+}
+
+html[lang="ko"] .lab-platform-copy p,
+html[lang="ko"] .lab-platform-detail h4,
+html[lang="ko"] .lab-platform-detail p,
+html[lang="ko"] .lab-platform-takeaway {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.lab-platform-tool {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    min-height: 34px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: #f0fdfa;
+    color: #0f766e;
+    font-size: 0.84rem;
+    font-weight: 900;
+}
+
+@media (max-width: 980px) {
+    .lab-platform-image-shell {
+        margin: 0 22px 20px;
+    }
+
+    .lab-platform-image-wrap {
+        min-height: auto;
+    }
+
+    .lab-platform-detail {
+        grid-template-columns: 1fr;
+        margin: 0 22px 24px;
+    }
+}
+
+@media (max-width: 700px) {
+    .lab-platform-header {
+        padding: 28px 20px 18px;
+    }
+
+    .lab-platform-image-shell {
+        margin: 0 16px 18px;
+        border-radius: 14px;
+    }
+
+    .lab-platform-piece {
+        display: none;
+    }
+
+    .lab-platform-mobile-list {
+        display: grid;
+    }
+
+    .lab-platform-detail {
+        margin: 0 16px 20px;
+        padding: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lab-platform-piece {
+        transition:
+            transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+            filter 220ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+}

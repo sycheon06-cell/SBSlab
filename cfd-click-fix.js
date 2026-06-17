@@ -242,7 +242,7 @@
             ({ video, source } = replaceCfdVideoNode(video, source, videoUrl));
             if (image) {
                 image.hidden = false;
-                image.src = window.SBES_CFD_POSTER_SRC || 'images/software/cfd-workbench.png';
+                image.src = window.SBES_CFD_POSTER_SRC || 'images/software/cfd-workbench.jpg';
                 image.alt = 'CFD preview poster showing airflow, temperature, CO2, and humidity fields';
             }
 

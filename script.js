@@ -73,6 +73,17 @@ document.addEventListener('DOMContentLoaded', () => {
             'software.psych.copy': 'Interactive moist-air calculator for state points, properties, and HVAC process paths.',
             'software.modeling.copy': 'DOE/RSM and surrogate modeling workspace for experiment and simulation datasets.',
             'software.optimization.copy': 'Beta web app for general design optimization, parameter studies, and trade-off analysis.',
+            'software.tag.energyplus': 'EnergyPlus',
+            'software.tag.buildingEnergy': 'Building energy',
+            'software.tag.openfoam': 'OpenFOAM',
+            'software.tag.airflow': 'Airflow analysis',
+            'software.tag.membrane': 'Membrane humidifier',
+            'software.tag.webTool': 'Web tool',
+            'software.tag.moistAir': 'Moist air',
+            'software.tag.doe': 'DOE/RSM',
+            'software.tag.surrogate': 'Surrogate modeling',
+            'software.tag.optimization': 'Optimization',
+            'software.tag.decision': 'Decision support',
             'software.details': 'Details',
             'software.viewExample': 'Video Preview',
             'software.launch': 'Launch App',
@@ -156,18 +167,29 @@ document.addEventListener('DOMContentLoaded', () => {
             'software.building.copy': 'EnergyPlus 기반 모델 설정, 시뮬레이션 실행, 에너지 성능 검토를 지원하는 베타 웹 앱입니다.',
             'software.cfd.copy': '실내 기류, 온도, 습도, CO2 분포를 4분할 영상으로 보여주는 CFD 해석 예시입니다.',
             'software.membrane.copy': '중공사막 멤브레인 가습기의 용량과 성능을 빠르게 검토하는 웹 설계 도구입니다.',
-            'software.psych.copy': '상태점, 습공기 물성, HVAC 공정 변화를 대화형 선도에서 계산합니다.',
-            'software.modeling.copy': '실험·시뮬레이션 데이터를 바탕으로 DOE/RSM과 surrogate model을 구성하는 도구입니다.',
-            'software.optimization.copy': '범용 설계 최적화, 파라미터 연구, trade-off 분석을 지원하는 베타 웹 앱입니다.',
+            'software.psych.copy': '상태점, 습공기 물성, HVAC 공정 변화를 대화형 습공기 선도에서 계산합니다.',
+            'software.modeling.copy': '실험·시뮬레이션 데이터를 바탕으로 DOE/RSM과 대체모델을 구성하는 도구입니다.',
+            'software.optimization.copy': '범용 설계 최적화, 파라미터 연구, 상충관계 분석을 지원하는 베타 웹 앱입니다.',
+            'software.tag.energyplus': 'EnergyPlus',
+            'software.tag.buildingEnergy': '건물 에너지',
+            'software.tag.openfoam': 'OpenFOAM',
+            'software.tag.airflow': '기류 해석',
+            'software.tag.membrane': '멤브레인 가습기',
+            'software.tag.webTool': '웹 도구',
+            'software.tag.moistAir': '습공기',
+            'software.tag.doe': 'DOE/RSM',
+            'software.tag.surrogate': '대체모델링',
+            'software.tag.optimization': '최적화',
+            'software.tag.decision': '의사결정 지원',
             'software.details': '자세히',
             'software.viewExample': '영상 예시',
             'software.launch': '앱 열기',
-            'tool.building.text': '웹에서 건물 모델을 설정하고 EnergyPlus 시뮬레이션 결과를 검토할 수 있는 베타 웹 앱입니다. 브라우저 기반 건물 에너지 해석 워크플로우를 초기 테스트하는 단계입니다.',
+            'tool.building.text': '웹에서 건물 모델을 설정하고 EnergyPlus 시뮬레이션 결과를 검토할 수 있는 베타 웹 앱입니다. 브라우저에서 건물 에너지 해석 과정을 테스트하는 단계입니다.',
             'tool.cfd.text': '건물 HVAC 해석 결과를 10초 길이의 4분할 CFD 영상으로 시각화한 예시입니다. 실내 기류, 온도, 습도, CO2 분포를 함께 보며 공간별 분포, 국부적 불균일성, 환기 거동을 확인할 수 있습니다.',
             'tool.membrane.text': '중공사막 멤브레인 가습기 설계를 웹에서 빠르게 검토하는 도구입니다. 운전 조건을 입력하면 주요 사양과 성능을 계산해 멤브레인 가습 시스템의 적용 가능성을 확인할 수 있습니다.',
-            'tool.psych.text': '습공기 물성, 상태점, HVAC 공정 변화를 대화형 선도에서 계산하는 웹 도구입니다. 냉각, 가열, 가습, 제습 과정의 상태 변화를 빠르게 확인할 수 있습니다.',
-            'tool.modeling.text': 'DOE, RSM, 검증, AI-assisted surrogate modeling을 지원하는 웹 기반 데이터 모델링 도구입니다. 실험·시뮬레이션 데이터를 예측 모델로 정리해 설계 검토와 민감도 분석에 활용할 수 있습니다.',
-            'tool.optimization.text': '설계 변수, 제약조건, 목적함수, trade-off를 함께 다루는 범용 최적화 베타 웹 앱입니다. HVAC에 한정하지 않고 다양한 설계 최적화 문제를 다룰 수 있도록 테스트 중입니다.',
+            'tool.psych.text': '습공기 물성, 상태점, HVAC 공정 변화를 대화형 습공기 선도에서 계산하는 웹 도구입니다. 냉각, 가열, 가습, 제습 과정의 상태 변화를 빠르게 확인할 수 있습니다.',
+            'tool.modeling.text': 'DOE, RSM, 검증, AI 보조 대체모델링을 지원하는 웹 기반 데이터 모델링 도구입니다. 실험·시뮬레이션 데이터를 예측 모델로 정리하고 설계 검토와 민감도 분석에 활용할 수 있습니다.',
+            'tool.optimization.text': '설계 변수, 제약조건, 목적함수, 상충관계를 함께 다루는 범용 최적화 베타 웹 앱입니다. 여러 설계안을 비교하고 조건에 따른 최적 해를 빠르게 탐색하는 용도로 테스트 중입니다.',
             'contact.title': '연락처',
             'contact.location': '한양대학교, 서울, 대한민국',
             'contact.copy': '<i class="fas fa-copy"></i> 이메일 복사',
@@ -241,6 +263,18 @@ document.addEventListener('DOMContentLoaded', () => {
         { selector: '[data-tool-card="psychrometric"] .software-body p', key: 'software.psych.copy' },
         { selector: '[data-tool-card="modeling"] .software-body p', key: 'software.modeling.copy' },
         { selector: '[data-tool-card="optimization"] .software-body p', key: 'software.optimization.copy' },
+        { selector: '[data-tool-card="building"] .software-tag:nth-child(1)', key: 'software.tag.energyplus' },
+        { selector: '[data-tool-card="building"] .software-tag:nth-child(2)', key: 'software.tag.buildingEnergy' },
+        { selector: '[data-tool-card="cfd"] .software-tag:nth-child(1)', key: 'software.tag.openfoam' },
+        { selector: '[data-tool-card="cfd"] .software-tag:nth-child(2)', key: 'software.tag.airflow' },
+        { selector: '[data-tool-card="membrane"] .software-tag:nth-child(1)', key: 'software.tag.membrane' },
+        { selector: '[data-tool-card="membrane"] .software-tag:nth-child(2)', key: 'software.tag.webTool' },
+        { selector: '[data-tool-card="psychrometric"] .software-tag:nth-child(1)', key: 'software.tag.moistAir' },
+        { selector: '[data-tool-card="psychrometric"] .software-tag:nth-child(2)', key: 'software.tag.webTool' },
+        { selector: '[data-tool-card="modeling"] .software-tag:nth-child(1)', key: 'software.tag.doe' },
+        { selector: '[data-tool-card="modeling"] .software-tag:nth-child(2)', key: 'software.tag.surrogate' },
+        { selector: '[data-tool-card="optimization"] .software-tag:nth-child(1)', key: 'software.tag.optimization' },
+        { selector: '[data-tool-card="optimization"] .software-tag:nth-child(2)', key: 'software.tag.decision' },
         { selector: '[data-tool-card="building"] .software-action.primary', key: 'software.launch' },
         { selector: '[data-tool-card="optimization"] .software-action.primary', key: 'software.launch' },
         { selector: '[data-tool-card="cfd"] .software-action.primary', key: 'software.viewExample' },
@@ -266,7 +300,13 @@ document.addEventListener('DOMContentLoaded', () => {
         { selector: '.profile-link', attr: 'aria-label', key: 'aria.profile' }
     ];
 
-    let currentLang = localStorage.getItem('sbes-lang') === 'ko' ? 'ko' : 'en';
+    function getInitialLanguage() {
+        const urlLang = new URLSearchParams(window.location.search).get('lang');
+        if (urlLang === 'ko' || urlLang === 'en') return urlLang;
+        return localStorage.getItem('sbes-lang') === 'ko' ? 'ko' : 'en';
+    }
+
+    let currentLang = getInitialLanguage();
 
     function i18nValue(key) {
         return I18N[currentLang]?.[key] ?? I18N.en[key] ?? '';
@@ -323,9 +363,13 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.classList.toggle('active', open);
         hamburger.classList.toggle('toggle', open);
         hamburger.setAttribute('aria-expanded', String(open));
+        const icon = hamburger.querySelector('i');
+        if (icon) {
+            icon.className = open ? 'fas fa-times' : 'fas fa-bars';
+        }
 
         navItems.forEach((link, index) => {
-            link.style.animation = open ? `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s` : '';
+            link.style.animation = open ? `navLinkFade 0.28s ease forwards ${index * 0.04}s` : '';
         });
     }
 
@@ -473,7 +517,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toolDetails = {
         building: {
             title: 'Building Simulation Studio',
-            image: 'images/software/building-simulation.png',
+            image: 'images/software/building-simulation.jpg',
             statusKey: 'software.status.beta',
             statusClass: 'software-status beta',
             textKey: 'tool.building.text',
@@ -482,10 +526,10 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         cfd: {
             title: 'CFD Simulation Workbench',
-            image: 'images/software/cfd-workbench.png',
+            image: 'images/software/cfd-workbench.jpg',
             video: 'videos/hvac_cfd_clean_timelapse_4panel_10s.mp4',
             videoResolver: 'SBES_GET_CFD_4PANEL_VIDEO_URL',
-            poster: 'images/software/cfd-workbench.png',
+            poster: 'images/software/cfd-workbench.jpg',
             statusKey: 'software.status.local',
             statusClass: 'software-status research',
             textKey: 'tool.cfd.text',
@@ -493,7 +537,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         membrane: {
             title: 'Membrane Designer',
-            image: 'images/software/membrane-designer.png',
+            image: 'images/software/membrane-designer.jpg',
             statusKey: 'software.status.live',
             statusClass: 'software-status',
             textKey: 'tool.membrane.text',
@@ -520,7 +564,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         optimization: {
             title: 'Optimization Studio',
-            image: 'images/software/optimization-studio.png',
+            image: 'images/software/optimization-studio.jpg',
             statusKey: 'software.status.beta',
             statusClass: 'software-status beta',
             textKey: 'tool.optimization.text',
