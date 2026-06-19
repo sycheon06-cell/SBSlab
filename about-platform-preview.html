@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SBES Lab About Platform Preview</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+<link href="brand.css" rel="stylesheet"/>
+<link href="usability.css" rel="stylesheet"/>
+<style>
+    :root {
+        --platform-navy: #0b1533;
+        --platform-blue: #1f5fae;
+        --platform-teal: #14a6a3;
+        --platform-green: #2e7d32;
+        --platform-orange: #e65a1e;
+        --platform-border: rgba(15, 23, 42, 0.10);
+    }
+
+    .preview-language {
+        display: inline-flex;
+        gap: 6px;
+        padding: 4px;
+        border: 1px solid rgba(31, 95, 174, 0.16);
+        border-radius: 999px;
+        background: #ffffff;
+    }
+
+    .preview-language button {
+        min-width: 42px;
+        height: 30px;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: #526986;
+        font-weight: 800;
+        cursor: pointer;
+    }
+
+    .preview-language button[aria-pressed="true"] {
+        background: var(--platform-blue);
+        color: #ffffff;
+    }
+
+    .about-platform-action {
+        margin-top: 28px;
+    }
+
+    .research-platform {
+        margin-top: 34px;
+        scroll-margin-top: 116px;
+        border: 1px solid var(--platform-border);
+        border-radius: 18px;
+        background: #ffffff;
+        box-shadow: 0 18px 48px rgba(11, 21, 51, 0.08);
+        overflow: hidden;
+    }
+
+    .research-platform[hidden] {
+        display: none;
+    }
+
+    .platform-header {
+        padding: 34px 38px 20px;
+        text-align: center;
+    }
+
+    .platform-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--platform-teal);
+        font-weight: 800;
+        font-size: 0.84rem;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+    }
+
+    .platform-header h3 {
+        margin: 12px auto 10px;
+        max-width: 860px;
+        color: var(--platform-navy);
+        font-size: clamp(1.75rem, 3vw, 2.45rem);
+        line-height: 1.2;
+        letter-spacing: 0;
+    }
+
+    .platform-vision {
+        margin: 0 auto;
+        max-width: 760px;
+        color: #526986;
+        line-height: 1.7;
+    }
+
+    .platform-image-shell {
+        position: relative;
+        margin: 0 30px 24px;
+        border: 1px solid rgba(31, 95, 174, 0.12);
+        border-radius: 18px;
+        background:
+            radial-gradient(circle at 50% 50%, rgba(20, 166, 163, 0.08), transparent 36%),
+            #f8fafc;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+        overflow: hidden;
+    }
+
+    .platform-image-wrap {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1996 / 920;
+        min-height: 430px;
+    }
+
+    .platform-image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: #ffffff;
+    }
+
+    .platform-hotspot {
+        --hotspot-color: var(--platform-blue);
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 42px;
+        height: 42px;
+        border: 2px solid #ffffff;
+        border-radius: 999px;
+        background: var(--hotspot-color);
+        color: #ffffff;
+        box-shadow: 0 10px 22px rgba(11, 21, 51, 0.22);
+        font-weight: 900;
+        cursor: pointer;
+        transition: transform 160ms ease, box-shadow 160ms ease, outline-color 160ms ease;
+    }
+
+    .platform-hotspot:hover,
+    .platform-hotspot:focus-visible,
+    .platform-hotspot[aria-pressed="true"] {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 16px 30px rgba(11, 21, 51, 0.28);
+        outline: 5px solid color-mix(in srgb, var(--hotspot-color), transparent 75%);
+        outline-offset: 2px;
+    }
+
+    .platform-hotspot[data-module="develop"] {
+        --hotspot-color: var(--platform-green);
+        left: 4.2%;
+        top: 7%;
+    }
+
+    .platform-hotspot[data-module="integrate"] {
+        --hotspot-color: var(--platform-orange);
+        right: 4.3%;
+        top: 7%;
+    }
+
+    .platform-hotspot[data-module="evaluate"] {
+        --hotspot-color: var(--platform-blue);
+        left: 4.2%;
+        top: 53%;
+    }
+
+    .platform-hotspot[data-module="operate"] {
+        --hotspot-color: var(--platform-teal);
+        right: 4.3%;
+        top: 53%;
+    }
+
+    .platform-focus-outline {
+        --outline-color: var(--platform-blue);
+        position: absolute;
+        border: 3px solid var(--outline-color);
+        border-radius: 16px;
+        background: color-mix(in srgb, var(--outline-color), transparent 95%);
+        pointer-events: none;
+        transition: inset 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .research-platform[data-active="develop"] .platform-focus-outline {
+        --outline-color: var(--platform-green);
+        inset: 6.2% 55.2% 54.4% 2.0%;
+    }
+
+    .research-platform[data-active="integrate"] .platform-focus-outline {
+        --outline-color: var(--platform-orange);
+        inset: 6.2% 2.0% 54.4% 55.2%;
+    }
+
+    .research-platform[data-active="evaluate"] .platform-focus-outline {
+        --outline-color: var(--platform-blue);
+        inset: 51.8% 55.2% 8.2% 2.0%;
+    }
+
+    .research-platform[data-active="operate"] .platform-focus-outline {
+        --outline-color: var(--platform-teal);
+        inset: 51.8% 2.0% 8.2% 55.2%;
+    }
+
+    .platform-detail {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 24px;
+        margin: 0 30px 30px;
+        padding: 24px;
+        border: 1px solid rgba(31, 95, 174, 0.12);
+        border-radius: 16px;
+        background: #ffffff;
+        box-shadow: 0 12px 30px rgba(11, 21, 51, 0.06);
+    }
+
+    .detail-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--platform-blue);
+        font-weight: 900;
+        font-size: 0.8rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+    }
+
+    .platform-detail h4 {
+        margin: 9px 0 8px;
+        color: var(--platform-navy);
+        font-size: 1.32rem;
+        line-height: 1.35;
+    }
+
+    .platform-detail p {
+        margin: 0;
+        color: #526986;
+        line-height: 1.7;
+    }
+
+    .detail-side {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .detail-next {
+        margin: 0;
+        padding: 14px 16px;
+        border-radius: 13px;
+        background: #f8fafc;
+        color: #315f93;
+        font-weight: 800;
+        line-height: 1.55;
+    }
+
+    .tool-pill {
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        min-height: 34px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: #f0fdfa;
+        color: #0f766e;
+        font-size: 0.84rem;
+        font-weight: 900;
+    }
+
+    .platform-mobile-list {
+        display: none;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin: 0 22px 22px;
+    }
+
+    .mobile-module-button {
+        border: 1px solid rgba(31, 95, 174, 0.14);
+        border-left: 4px solid var(--module-color);
+        border-radius: 13px;
+        background: #ffffff;
+        padding: 16px;
+        text-align: left;
+        box-shadow: 0 8px 18px rgba(11, 21, 51, 0.06);
+        cursor: pointer;
+    }
+
+    .mobile-module-button strong {
+        display: block;
+        color: var(--platform-navy);
+        font-size: 1rem;
+    }
+
+    .mobile-module-button span {
+        display: block;
+        margin-top: 5px;
+        color: #526986;
+        line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+        .platform-image-shell {
+            margin: 0 22px 20px;
+        }
+
+        .platform-image-wrap {
+            min-height: auto;
+            aspect-ratio: 1996 / 920;
+        }
+
+        .platform-hotspot {
+            width: 34px;
+            height: 34px;
+            min-width: 34px;
+            font-size: 0.82rem;
+        }
+
+        .platform-detail {
+            grid-template-columns: 1fr;
+            margin: 0 22px 24px;
+        }
+    }
+
+    @media (max-width: 620px) {
+        .platform-header {
+            padding: 28px 20px 18px;
+        }
+
+        .platform-image-shell {
+            margin: 0 16px 18px;
+            border-radius: 14px;
+        }
+
+        .platform-hotspot,
+        .platform-focus-outline {
+            display: none;
+        }
+
+        .platform-mobile-list {
+            display: grid;
+        }
+
+        .platform-detail {
+            margin: 0 16px 20px;
+            padding: 20px;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .platform-hotspot,
+        .platform-focus-outline {
+            transition: none;
+        }
+
+        .platform-hotspot:hover,
+        .platform-hotspot:focus-visible,
+        .platform-hotspot[aria-pressed="true"] {
+            transform: none;
+        }
+    }
+</style>
+</head>
+<body>
+<nav class="navbar">
+<div class="container">
+<a class="logo" href="#" aria-label="SBES Lab Home">
+<img alt="SBES Lab" class="logo-img" height="160" src="images/sbes-logo-horizontal.png" width="536"/>
+</a>
+<ul class="nav-links" id="primary-navigation">
+<li><a href="#about">About</a></li>
+<li><a href="#platform-preview">Platform</a></li>
+</ul>
+<div class="preview-language" role="group" aria-label="Preview language">
+<button type="button" data-lang="en" aria-pressed="true">EN</button>
+<button type="button" data-lang="ko" aria-pressed="false">KR</button>
+</div>
+</div>
+</nav>
+<main>
+<section class="section" id="about">
+<div class="container">
+<h2 class="section-title" data-copy="aboutTitle">About the Lab</h2>
+<div class="about-grid">
+<div class="about-text">
+<p data-copy="aboutText">SBES Lab studies technologies that help buildings use less energy while keeping indoor spaces comfortable and healthy.</p>
+<button class="btn btn-primary about-platform-action" id="platform-toggle" type="button" aria-expanded="false" aria-controls="platform-preview" data-copy="buttonText">Explore Research Platform</button>
+</div>
+</div>
+<div class="research-platform" id="platform-preview" data-active="develop" hidden>
+<div class="platform-header">
+<span class="platform-kicker" data-copy="kicker"><i class="fas fa-diagram-project"></i> Energy · Humidity · Indoor Air Quality</span>
+<h3 data-copy="platformTitle">Sustainable Building HVAC & Energy Systems Lab</h3>
+<p class="platform-vision" data-copy="platformVision">An integrated research platform for healthier indoor spaces and lower building energy use.</p>
+</div>
+<div class="platform-image-shell">
+<div class="platform-image-wrap">
+<img class="platform-image" src="images/about-platform-reference.png?v=20260618-nextgen" alt="SBES Lab integrated research platform diagram"/>
+<div class="platform-focus-outline" aria-hidden="true"></div>
+<button class="platform-hotspot" data-module="develop" type="button" aria-pressed="true" aria-label="Develop">01</button>
+<button class="platform-hotspot" data-module="integrate" type="button" aria-pressed="false" aria-label="Integrate">02</button>
+<button class="platform-hotspot" data-module="evaluate" type="button" aria-pressed="false" aria-label="Evaluate">03</button>
+<button class="platform-hotspot" data-module="operate" type="button" aria-pressed="false" aria-label="Operate">04</button>
+</div>
+</div>
+<div class="platform-mobile-list" id="mobile-modules"></div>
+<div class="platform-detail" id="platform-detail" aria-live="polite">
+<div>
+<span class="detail-label" id="detail-step"></span>
+<h4 id="detail-title"></h4>
+<p id="detail-text"></p>
+</div>
+<div class="detail-side">
+<p class="detail-next" id="detail-next"></p>
+<span class="tool-pill" id="detail-tool"></span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<script>
+const platformText = {
+    en: {
+        aboutTitle: "About the Lab",
+        aboutText: "SBES Lab studies technologies that help buildings use less energy while keeping indoor spaces comfortable and healthy.",
+        buttonText: "Explore Research Platform",
+        kicker: '<i class="fas fa-diagram-project"></i> Energy · Humidity · Indoor Air Quality',
+        platformTitle: "Sustainable Building HVAC & Energy Systems Lab",
+        platformVision: "An integrated research platform for healthier indoor spaces and lower building energy use.",
+        detailPrefix: "Step",
+        toolPrefix: "Related web tool",
+        modules: [
+            {
+                id: "develop",
+                step: "01",
+                verb: "Develop",
+                title: "Next-Generation HVAC Component Technologies",
+                shortText: "Component technologies for low-energy humidity control and non-refrigerant HVAC.",
+                detail: "This area focuses on next-generation HVAC component technologies, including advanced membrane components, humidity-control devices, heat and mass transfer design, and non-refrigerant HVAC processes.",
+                next: "Visitor takeaway: SBES Lab starts from component-level innovation and connects it to integrated HVAC and energy systems.",
+                tool: "Membrane Designer",
+                color: "#2e7d32"
+            },
+            {
+                id: "integrate",
+                step: "02",
+                verb: "Integrate",
+                title: "Integrated HVAC & Energy Systems",
+                shortText: "Ventilation, heat recovery, cooling, and humidity control as one system.",
+                detail: "We connect individual technologies into practical HVAC system layouts, including ventilation, heat recovery, evaporative cooling, and energy recovery strategies.",
+                next: "Visitor takeaway: the goal is a complete building system, not just one device.",
+                tool: "Psychrometric Chart",
+                color: "#e65a1e"
+            },
+            {
+                id: "evaluate",
+                step: "03",
+                verb: "Evaluate",
+                title: "Building-Scale Performance Evaluation",
+                shortText: "Testing comfort and energy impact at the whole-building scale.",
+                detail: "We evaluate how HVAC strategies perform in real building conditions using energy simulation, airflow visualization, climate analysis, and load analysis.",
+                next: "Visitor takeaway: building-scale evaluation shows whether a technology can make a practical difference.",
+                tool: "Building Simulation Studio",
+                color: "#1f5fae"
+            },
+            {
+                id: "operate",
+                step: "04",
+                verb: "Operate",
+                title: "Control-Oriented Operation & Automation",
+                shortText: "Sensors, models, and optimization for smarter building operation.",
+                detail: "We use BEMS data, sensors, predictive models, and optimization to improve operation after the building is in use.",
+                next: "Visitor takeaway: smart operation helps buildings keep saving energy every day.",
+                tool: "Data Modeling & Optimization Studio",
+                color: "#14a6a3"
+            }
+        ]
+    },
+    ko: {
+        aboutTitle: "연구실 소개",
+        aboutText: "SBES Lab은 건물이 에너지를 덜 쓰면서도 쾌적하고 건강한 실내환경을 유지하도록 돕는 기술을 연구합니다.",
+        buttonText: "연구 플랫폼 보기",
+        kicker: '<i class="fas fa-diagram-project"></i> 에너지 · 습도 · 실내공기질',
+        platformTitle: "지속가능 건물 HVAC 및 에너지 시스템 연구 플랫폼",
+        platformVision: "더 건강한 실내공간과 낮은 건물 에너지 사용을 위한 통합 연구 플랫폼입니다.",
+        detailPrefix: "단계",
+        toolPrefix: "관련 웹 도구",
+        modules: [
+            {
+                id: "develop",
+                step: "01",
+                verb: "개발",
+                title: "차세대 HVAC 요소기술",
+                shortText: "저에너지 습도 제어와 비냉매 공조를 위한 요소기술입니다.",
+                detail: "멤브레인, 습도 제어, 열·물질전달, 비냉매 공조 공정을 포함한 차세대 HVAC 요소기술을 다룹니다.",
+                next: "SBES Lab은 요소기술 단계의 혁신을 통합 공조·에너지 시스템으로 연결합니다.",
+                tool: "Membrane Designer",
+                color: "#2e7d32"
+            },
+            {
+                id: "integrate",
+                step: "02",
+                verb: "통합",
+                title: "통합 HVAC 및 에너지 시스템",
+                shortText: "환기, 열회수, 냉방, 습도 제어를 하나의 시스템으로 연결합니다.",
+                detail: "개별 기술을 실제 공조 시스템 안에서 함께 작동하도록 통합합니다. 환기, 열회수, 증발냉각, 에너지 회수 전략을 함께 검토합니다.",
+                next: "방문자 관점: 하나의 장치가 아니라 실제 건물에서 작동하는 완성형 시스템을 만드는 것이 목표입니다.",
+                tool: "Psychrometric Chart",
+                color: "#e65a1e"
+            },
+            {
+                id: "evaluate",
+                step: "03",
+                verb: "평가",
+                title: "건물 단위 성능 평가",
+                shortText: "건물 전체에서 쾌적성과 에너지 절감 효과를 확인합니다.",
+                detail: "에너지 시뮬레이션, 기류 시각화, 기후 분석, 부하 분석을 활용해 공조 전략이 실제 건물 조건에서 어떻게 작동하는지 평가합니다.",
+                next: "방문자 관점: 건물 단위 평가를 통해 기술이 실제로 의미 있는 차이를 만드는지 확인할 수 있습니다.",
+                tool: "Building Simulation Studio",
+                color: "#1f5fae"
+            },
+            {
+                id: "operate",
+                step: "04",
+                verb: "운영",
+                title: "제어 지향 운영 및 자동화",
+                shortText: "센서, 모델, 최적화를 활용해 건물 운영을 개선합니다.",
+                detail: "BEMS 데이터, 센서, 예측 모델, 최적화를 활용해 건물이 사용되는 동안에도 공조 시스템이 더 효율적으로 운영되도록 지원합니다.",
+                next: "방문자 관점: 스마트 운영은 건물이 매일 에너지를 덜 쓰도록 돕습니다.",
+                tool: "Data Modeling & Optimization Studio",
+                color: "#14a6a3"
+            }
+        ]
+    }
+};
+
+const platform = document.getElementById("platform-preview");
+const toggle = document.getElementById("platform-toggle");
+const languageButtons = document.querySelectorAll(".preview-language button");
+const hotspots = document.querySelectorAll(".platform-hotspot");
+const mobileModules = document.getElementById("mobile-modules");
+const detailStep = document.getElementById("detail-step");
+const detailTitle = document.getElementById("detail-title");
+const detailText = document.getElementById("detail-text");
+const detailNext = document.getElementById("detail-next");
+const detailTool = document.getElementById("detail-tool");
+let currentLang = "en";
+let activeId = "develop";
+
+function modules() {
+    return platformText[currentLang].modules;
+}
+
+function applyStaticCopy() {
+    const copy = platformText[currentLang];
+    document.documentElement.lang = currentLang;
+    document.querySelectorAll("[data-copy]").forEach((element) => {
+        const key = element.dataset.copy;
+        if (copy[key] === undefined) return;
+        if (key === "kicker") element.innerHTML = copy[key];
+        else element.textContent = copy[key];
+    });
+}
+
+function renderMobileButtons() {
+    const buttons = modules().map((module) => {
+        const button = document.createElement("button");
+        button.className = "mobile-module-button";
+        button.type = "button";
+        button.dataset.module = module.id;
+        button.style.setProperty("--module-color", module.color);
+        button.innerHTML = `<strong>${module.step}. ${module.title}</strong><span>${module.shortText}</span>`;
+        button.addEventListener("click", () => setActiveModule(module.id));
+        return button;
+    });
+    mobileModules.replaceChildren(...buttons);
+}
+
+function setActiveModule(id) {
+    const copy = platformText[currentLang];
+    const active = modules().find((module) => module.id === id) || modules()[0];
+    activeId = active.id;
+    platform.dataset.active = active.id;
+    hotspots.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.module === active.id));
+    });
+    mobileModules.querySelectorAll("button").forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.module === active.id));
+    });
+    detailStep.innerHTML = `<i class="fas fa-circle-dot"></i> ${copy.detailPrefix} ${active.step} · ${active.verb}`;
+    detailTitle.textContent = active.title;
+    detailText.textContent = active.detail;
+    detailNext.textContent = active.next;
+    detailTool.innerHTML = `<i class="fas fa-screwdriver-wrench"></i>&nbsp; ${copy.toolPrefix}: ${active.tool}`;
+}
+
+function setLanguage(lang) {
+    currentLang = lang;
+    languageButtons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.lang === lang));
+    });
+    applyStaticCopy();
+    renderMobileButtons();
+    setActiveModule(activeId);
+}
+
+toggle.addEventListener("click", () => {
+    const expanded = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!expanded));
+    platform.hidden = expanded;
+    if (!expanded) {
+        platform.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    }
+});
+
+hotspots.forEach((button) => {
+    button.addEventListener("click", () => setActiveModule(button.dataset.module));
+});
+
+languageButtons.forEach((button) => {
+    button.addEventListener("click", () => setLanguage(button.dataset.lang));
+});
+
+setLanguage("en");
+const params = new URLSearchParams(window.location.search);
+if (params.get("lang") === "ko") setLanguage("ko");
+if (params.get("open") === "1") {
+    toggle.setAttribute("aria-expanded", "true");
+    platform.hidden = false;
+}
+</script>
+</body>
+</html>
