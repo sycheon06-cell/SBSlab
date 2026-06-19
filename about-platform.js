@@ -15,10 +15,10 @@
     const copy = {
         en: {
             aboutTitle: 'About the Lab',
-            aboutText: 'SBES Lab studies sustainable building HVAC and energy systems for lower energy use, better humidity control, and healthier indoor environments.',
+            aboutText: 'We address emerging global challenges at the intersection of energy consumption, humidity control, and indoor air quality. Our lab develops non-refrigerant HVAC technologies, high-efficiency membrane systems, and climate-adaptive building strategies that reduce energy demand and enhance environmental health. Through system-level innovation, we aim to contribute to the transition toward sustainable, low-carbon built environments.',
             showMore: 'Show More Lab',
             kicker: '<i class="fas fa-diagram-project"></i> Energy &middot; Humidity &middot; Indoor Air Quality',
-            platformTitle: 'Research Vision',
+            platformTitle: 'Research Platform',
             platformVision: 'SBES Lab connects next-generation HVAC component technologies, integrated energy systems, building-scale performance evaluation, and data-driven operation into one research platform.',
             detailPrefix: 'Step',
             toolPrefix: 'Related web tool',
@@ -71,10 +71,10 @@
         },
         ko: {
             aboutTitle: '연구실 소개',
-            aboutText: 'SBES Lab은 건물 에너지 사용을 줄이고, 습도 제어와 실내공기질을 함께 개선하기 위한 지속가능 건물 공조 및 에너지 시스템을 연구합니다.',
-            showMore: '연구 비전 보기',
+            aboutText: 'SBES Lab은 에너지 소비, 습도 제어, 실내공기질이 만나는 지점에서 지속가능한 건물 공조·에너지 시스템을 연구합니다. 비냉매 HVAC 기술, 고효율 멤브레인 시스템, 기후 적응형 건물 전략을 통해 에너지 수요를 줄이고 건강한 실내환경을 구현하는 것을 목표로 합니다. 시스템 수준의 혁신을 통해 저탄소 건축 환경으로의 전환에 기여하고자 합니다.',
+            showMore: '연구 플랫폼 보기',
             kicker: '<i class="fas fa-diagram-project"></i> 에너지 &middot; 습도 &middot; 실내공기질',
-            platformTitle: '연구 비전',
+            platformTitle: '연구 플랫폼',
             platformVision: 'SBES Lab은 차세대 HVAC 요소기술, 통합 에너지 시스템, 건물 단위 성능 평가, 데이터 기반 운영을 하나의 연구 플랫폼으로 연결하는 것을 목표로 합니다.',
             detailPrefix: '단계',
             toolPrefix: '관련 웹 도구',
